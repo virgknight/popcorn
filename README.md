@@ -7,7 +7,7 @@ Popcorn Popper is a single-player game in which a player earns points and ascend
 In Popcorn Popper, the user will be able to:
 * Start and stop a new game
 * Play through different levels of increasing difficulty
-* Rotate fuses on a click
+* Rotate fuse pieces on a click
 * Construct fuse paths that ignite one or more popcorn kernels
 
 In addition, this project will include:
@@ -27,7 +27,21 @@ This project will be implemented with the following technologies:
 
 ## Implementation Timeline
 ### Friday Afternoon & Weekend
+* Study similar games to get a feel for the setup and logic
+* Set up the environment, including WebPack
+* Write classes and controllers for grid pieces
+* Hopefully get the Canvas display up and running
+
 ### Monday
+* Write logic for user interaction: rotating fuse elements, getting directions, etc.
+* Write logic for scoring, game timer, and level completion 
+
 ### Tuesday
+* Complete any remaining logic in run.js file; by the end of the day the game should (hopefully) be fully functional, just lacking styling
+
 ### Wednesday
+* Focus on styling and graphic touches, including but not limited to color-coding fuse pieces, animating popped popcorn pieces, using CSS to make nav and other HTML elements "pretty"
+
 ### Thursday Morning
+* Complete any last-minute polishing and bug fixing
+* Push to GitHub and Heroku!
