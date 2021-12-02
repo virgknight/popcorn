@@ -16,6 +16,7 @@ In addition, this project will include:
 
 ## Wireframes
 ![wireframe](/images/Homepage.png)
+The navigation bar will include links to this project's GitHub repo, my LinkedIn, and the "How to Play" modal.
 
 ## Technologies, Libraries, APIs
 This project will be implemented with the following technologies:
