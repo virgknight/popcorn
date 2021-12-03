@@ -1,5 +1,3 @@
-// import Grid from './grid';
-// const View = require("./view.js");
 import Grid from "./grid";
 import View from "./view";
 

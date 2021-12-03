@@ -16,14 +16,21 @@ class View {
         let ul = document.createElement("ul");
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 6; j++) {
-                let occupant = this.gridObj.grid[i, j];
-                console.log(occupant);
                 let img = document.createElement("img");
                 img.src = "../images/test-fuse-piece.png";
 
                 let li = document.createElement("li");
                 li.id = `${i}${j}`;
                 li.classList.add("fuse");
+
+                let occupant = this.gridObj.grid[i][j];
+                if (occupant.connectK) {
+                    li.classList.add("kernel-connected");
+                };
+                if (occupant.connectF) {
+                    li.classList.add("flame-connected");
+                };
+
                 li.appendChild(img);
                 ul.appendChild(li);
             }

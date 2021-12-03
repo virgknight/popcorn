@@ -30,8 +30,10 @@ class Grid {
     refreshFuseConnections() {
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 6; j++) {
+                // check whether connected to flame from left to right
                 let fuse1 = this.grid[i][j];
                 fuse1.connectedToFlame();
+                // check whether connected to kernel from right to left
                 let fuse2 = this.grid[8 - i][5 - j];
                 fuse2.connectedToKernel();
             }
@@ -40,6 +42,7 @@ class Grid {
 
     rotate (pos) {
         this.grid[pos[0]][pos[1]].rotate();
+        this.refreshFuseConnections();
     }
 }
 

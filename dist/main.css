@@ -84,7 +84,7 @@ img {
 }
 
 figure.game-grid {
-  width: 300px;
+  width: 320px;
 }
 
 figure.game-grid ul {
@@ -98,4 +98,16 @@ figure.game-grid ul {
   border: 1px solid black;
   height: 50%;
   width: 20%;
+}
+
+li {
+  border: 1px solid whitesmoke;
+}
+
+li.kernel-connected {
+  border: 1px solid green;
+}
+
+li.flame-connected {
+  border: 1px solid red;
 }
