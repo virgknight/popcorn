@@ -48,6 +48,7 @@ class Fuse {
             return;
         } 
         
+        const gridValues = this.grid.grid;
         const connectedNeighbors = this.getConnectedNeighbors();
         if (connectedNeighbors.some((pos) => {
             const row = pos[0];
@@ -66,6 +67,7 @@ class Fuse {
             return;
         }
 
+        const gridValues = this.grid.grid;
         const connectedNeighbors = this.getConnectedNeighbors();
         if (connectedNeighbors.some((pos) => {
             const row = pos[0];
@@ -78,28 +80,34 @@ class Fuse {
         }
     }
 
-    getNeighborPositions () {
+    getConnectedNeighbors() {
         let neighbors = [];
-        const rowIdx = this.index[0];
-        const colIdx = this.index[1];
-
-        [rowIdx - 1, rowIdx + 1].forEach ((row) => {
-            neighbors.push([row, colIdx]);
-        });
-        [colIdx - 1, colIdx + 1].forEach((col) => {
-            neighbors.push([rowIdx, col]);
-        });
-
-        return neighbors.filter((idx) => (idx[0] >= 0 && idx[0] <= 8 && idx[1] >= 0 && idx[1] <= 5)
-);
-    } 
-
-    getConnectedNeighbors () {
-        const neighbors = this.getNeighborPositions();
         const gridValues = this.grid.grid;
+        const row = this.index[0];
+        const col = this.index[1];
 
-        
-    }
+        // up
+        if (this.fusePos[0] === 1 && row > 0) {
+            const connected = (gridValues[row - 1][col].fusePos[2] === 1);
+            if (connected) neighbors.push([row - 1,col]);
+        }
+        // right
+        if (this.fusePos[1] === 1 && col < 5) {
+            const connected = (gridValues[row][col + 1].fusePos[3] === 1);
+            if (connected) neighbors.push([row, col + 1]);
+        }
+        // down
+        if (this.fusePos[2] === 1 && row < 8) {
+            const connected = (gridValues[row + 1][col].fusePos[0] === 1);
+            if (connected) neighbors.push([row + 1, col]);
+        }
+        // left
+        if (this.fusePos[3] === 1 && col > 0) {
+            const connected = (gridValues[row][col - 1].fusePos[3] === 1);
+            if (connected) neighbors.push([row, col - 1]);
+        }
+        return neighbors;
+    } 
 
 
 
