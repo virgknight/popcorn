@@ -1,1 +1,46 @@
 @import './styles/reset.scss';
+
+body {
+    width: 60%;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}
+
+h1 {
+    font-size: 36;
+    font-weight: bold;
+    font-family: "Luminari", fantasy;
+    padding: 5px;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
+
+#game-components {
+    display: flex;
+}
+
+.game-board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure.game-grid {
+    width: 300px;
+}
+
+figure.game-grid ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar {
+    border: 1px solid black;
+    height: 50%;
+    width: 20%;
+}
