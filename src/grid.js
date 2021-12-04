@@ -3,7 +3,7 @@ import Fuse from "./fuse.js";
 class Grid {
     constructor () {
         this.grid = this.generateGrid();
-        this.refreshFuseConnections();
+        this.refreshFuseConnectionsBFS();
     }
 
     generateGrid() {
@@ -27,22 +27,37 @@ class Grid {
         return grid;
     }
 
-    refreshFuseConnections() {
-        for (let i = 0; i < 9; i++) {
-            for (let j = 0; j < 6; j++) {
-                // check whether connected to flame from left to right
-                let fuse1 = this.grid[i][j];
-                fuse1.connectedToFlame();
-                // check whether connected to kernel from right to left
-                let fuse2 = this.grid[8 - i][5 - j];
-                fuse2.connectedToKernel();
+    /// ADD LOGIC FOR KERNEL CONNECTION!
+    refreshFuseConnectionsBFS() {
+        let queue = [];
+        for (let times=0; times<2; times++){
+            for (let i=0; i<9; i++) {
+                queue.push([i, 0]);
+            }
+        }
+        let checked = [];
+
+        while (queue.length > 0) {
+            let idx = queue.shift();
+            checked.push(JSON.stringify(idx));
+            let fuse = this.grid[idx[0]][idx[1]];
+            let neighbors = fuse.getConnectedNeighbors();
+
+            fuse.connectedToFlame();
+            if (fuse.connectF && neighbors.length > 0) {
+                neighbors.forEach((neighbor) => {
+                    let neighborStr = JSON.stringify(neighbor);
+                    if (!checked.includes(neighborStr)) {
+                        queue.push(neighbor);
+                    }
+                });
             }
         }
     }
 
     rotate (pos) {
         this.grid[pos[0]][pos[1]].rotate();
-        this.refreshFuseConnections();
+        this.refreshFuseConnectionsBFS();
     }
 }
 

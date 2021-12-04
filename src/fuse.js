@@ -85,22 +85,22 @@ class Fuse {
 
         // up
         if (this.up() === 1 && row > 0) {
-            const connected = (gridValues[row - 1][col].fusePos[2] === 1);
+            const connected = (gridValues[row - 1][col].down() === 1);
             if (connected) neighbors.push([row - 1,col]);
         }
         // right
         if (this.right() === 1 && col < 5) {
-            const connected = (gridValues[row][col + 1].fusePos[3] === 1);
+            const connected = (gridValues[row][col + 1].left() === 1);
             if (connected) neighbors.push([row, col + 1]);
         }
         // down
         if (this.down() === 1 && row < 8) {
-            const connected = (gridValues[row + 1][col].fusePos[0] === 1);
+            const connected = (gridValues[row + 1][col].up() === 1);
             if (connected) neighbors.push([row + 1, col]);
         }
         // left
         if (this.left() === 1 && col > 0) {
-            const connected = (gridValues[row][col - 1].fusePos[1] === 1);
+            const connected = (gridValues[row][col - 1].right() === 1);
             if (connected) neighbors.push([row, col - 1]);
         }
         return neighbors;
