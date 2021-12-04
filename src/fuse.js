@@ -7,9 +7,6 @@ class Fuse {
         // 1 indicates that there is a connecting fuse end in that direction; 0 indicates that there is not
         this.fusePos = Fuse.getStartPos(params.numFuseEnds);
         this.grid = params.grid;
-
-        // set booleans for whether fuse adjoins kernel or flame to false at initialization- will be updated 
-        // when other functions run
         this.connectK = false;
         this.connectF = false;
     }
@@ -87,23 +84,23 @@ class Fuse {
         const col = this.index[1];
 
         // up
-        if (this.fusePos[0] === 1 && row > 0) {
+        if (this.up() === 1 && row > 0) {
             const connected = (gridValues[row - 1][col].fusePos[2] === 1);
             if (connected) neighbors.push([row - 1,col]);
         }
         // right
-        if (this.fusePos[1] === 1 && col < 5) {
+        if (this.right() === 1 && col < 5) {
             const connected = (gridValues[row][col + 1].fusePos[3] === 1);
             if (connected) neighbors.push([row, col + 1]);
         }
         // down
-        if (this.fusePos[2] === 1 && row < 8) {
+        if (this.down() === 1 && row < 8) {
             const connected = (gridValues[row + 1][col].fusePos[0] === 1);
             if (connected) neighbors.push([row + 1, col]);
         }
         // left
-        if (this.fusePos[3] === 1 && col > 0) {
-            const connected = (gridValues[row][col - 1].fusePos[3] === 1);
+        if (this.left() === 1 && col > 0) {
+            const connected = (gridValues[row][col - 1].fusePos[1] === 1);
             if (connected) neighbors.push([row, col - 1]);
         }
         return neighbors;

@@ -7,10 +7,14 @@ body {
 }
 
 h1 {
-    font-size: 36;
+    font-size: 42;
     font-weight: bold;
     font-family: "Luminari", fantasy;
-    padding: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: red;
+    color: white;
+    -webkit-text-stroke: 1px blanchedalmond;
 }
 
 img {
@@ -55,4 +59,8 @@ li.kernel-connected {
 
 li.flame-connected {
     border: 1px solid red;
+}
+
+.game-grid li:hover {
+    border: 2px solid gray;
 }

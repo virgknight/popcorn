@@ -8,7 +8,7 @@ class Grid {
 
     generateGrid() {
         const grid = [];
-        const positionFreq = [1,2,2,2,2,2,3,3,4,4];
+        const positionFreq = [2,2,2,2,2,2,3,3,4];
 
         // Populate grid
         for (let i = 0; i < 9; i++) {
