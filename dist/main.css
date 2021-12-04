@@ -88,7 +88,7 @@ img {
 }
 
 figure.game-grid {
-  width: 320px;
+  width: 330px;
 }
 
 figure.game-grid ul {
@@ -96,6 +96,10 @@ figure.game-grid ul {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+figure.game-grid li, figure.game-grid img {
+  border-radius: 5px;
 }
 
 .sidebar {
@@ -106,6 +110,7 @@ figure.game-grid ul {
 
 li {
   border: 1px solid whitesmoke;
+  padding: 1px;
 }
 
 li.kernel-connected {
@@ -114,6 +119,10 @@ li.kernel-connected {
 
 li.flame-connected {
   border: 1px solid red;
+}
+
+li.kernel-connected.flame-connected {
+  border: 1px solid yellow;
 }
 
 .game-grid li:hover {

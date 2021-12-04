@@ -1,46 +1,39 @@
 class Fuse {
     // takes in {index: [], numFuseEnds: integer, grid: Grid obj}
     constructor (params) {
-        // index: [row, column]
+        // index: [column, row]
         this.index = params.index;
         // fusePos: [up, right, down, left]
         // 1 indicates that there is a connecting fuse end in that direction; 0 indicates that there is not
         this.fusePos = Fuse.getStartPos(params.numFuseEnds);
+        // grid object, used to communicate with neighboring pieces of rope
         this.grid = params.grid;
+
+        // boolean indicating whether fuse connects to kernel
         this.connectK = false;
+        // boolean indicating whether fuse connects to flame
         this.connectF = false;
     }
 
     static getStartPos (numFuseEnds) {
-        let generator = Array(numFuseEnds).fill(1).concat(Array(4 - numFuseEnds).fill(0));
+        let newPosArray = Array(numFuseEnds).fill(1).concat(Array(4 - numFuseEnds).fill(0));
         if (numFuseEnds < 4) {
             // randomly shuffle fuse end order 
-            generator = generator.map((ele) => ({value: ele, sort: Math.random()}))
+            newPosArray = newPosArray.map((ele) => ({value: ele, sort: Math.random()}))
                         .sort((a,b) => a.sort - b.sort)
                         .map(({value}) => value);
         }
-        return generator;
+        return newPosArray;
     }
 
     // helper functions for quickly returning fuse positions in a certain direction
-    up () {
-        return this.fusePos[0];
-    }
-
-    right () {
-        return this.fusePos[1];
-    }
-
-    down() {
-        return this.fusePos[2];
-    }
-
-    left() {
-        return this.fusePos[3];
-    }
+    up () { return this.fusePos[0]; }
+    right () { return this.fusePos[1]; }
+    down() { return this.fusePos[2]; }
+    left() { return this.fusePos[3]; }
 
     connectedToKernel () {
-        if (this.index[1] === 5 && this.right() === 1) {
+        if (this.index[0] === 5 && this.right() === 1) {
             this.connectK = true;
             return;
         } 
@@ -48,9 +41,9 @@ class Fuse {
         const gridValues = this.grid.grid;
         const connectedNeighbors = this.getConnectedNeighbors();
         if (connectedNeighbors.some((pos) => {
-            const row = pos[0];
-            const col = pos[1];
-            return gridValues[row][col].connectK;
+            const col = pos[0];
+            const row = pos[1];
+            return gridValues[col][row].connectK;
         })) {
             this.connectK = true;
         } else {
@@ -59,7 +52,7 @@ class Fuse {
     }
 
     connectedToFlame() {
-        if (this.index[1] === 0 && this.left() === 1) {
+        if (this.index[0] === 0 && this.left() === 1) {
             this.connectF = true;
             return;
         }
@@ -67,9 +60,9 @@ class Fuse {
         const gridValues = this.grid.grid;
         const connectedNeighbors = this.getConnectedNeighbors();
         if (connectedNeighbors.some((pos) => {
-            const row = pos[0];
-            const col = pos[1];
-            return gridValues[row][col].connectF;
+            const col = pos[0];
+            const row = pos[1];
+            return gridValues[col][row].connectF;
         })) {
             this.connectF = true;
         } else {
@@ -80,32 +73,31 @@ class Fuse {
     getConnectedNeighbors() {
         let neighbors = [];
         const gridValues = this.grid.grid;
-        const row = this.index[0];
-        const col = this.index[1];
+        const row = this.index[1];
+        const col = this.index[0];
 
         // up
-        if (this.up() === 1 && row > 0) {
-            const connected = (gridValues[row - 1][col].down() === 1);
-            if (connected) neighbors.push([row - 1,col]);
+        if (this.up() === 1 && row < 8) {
+            const connected = (gridValues[col][row + 1].down() === 1);
+            if (connected) neighbors.push([col, row + 1]);
         }
         // right
         if (this.right() === 1 && col < 5) {
-            const connected = (gridValues[row][col + 1].left() === 1);
-            if (connected) neighbors.push([row, col + 1]);
+            const connected = (gridValues[col + 1][row].left() === 1);
+            if (connected) neighbors.push([col + 1, row]);
         }
         // down
-        if (this.down() === 1 && row < 8) {
-            const connected = (gridValues[row + 1][col].up() === 1);
-            if (connected) neighbors.push([row + 1, col]);
+        if (this.down() === 1 && row > 0) {
+            const connected = (gridValues[col][row - 1].up() === 1);
+            if (connected) neighbors.push([col, row - 1]);
         }
         // left
         if (this.left() === 1 && col > 0) {
-            const connected = (gridValues[row][col - 1].right() === 1);
-            if (connected) neighbors.push([row, col - 1]);
+            const connected = (gridValues[col - 1][row].right() === 1);
+            if (connected) neighbors.push([col - 1, row]);
         }
         return neighbors;
     } 
-
 
 
     rotate () {
@@ -114,3 +106,4 @@ class Fuse {
 }
 
 export default Fuse;
+export const {connectedToKernel, connectedToFlame} = new Fuse ({index: [], numFuseEnds: 0});

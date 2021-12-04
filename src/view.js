@@ -15,16 +15,16 @@ class View {
 
     setUpViewableGrid() {
         let ul = document.createElement("ul");
-        for (let i = 0; i < 9; i++) {
+        for (let i = 8; i >= 0; i--) {
             for (let j = 0; j < 6; j++) {
-                let occupant = this.gridObj.grid[i][j];
+                let occupant = this.gridObj.grid[j][i];
                 let occupantConfig = occupant.fusePos.join('');
 
                 let img = document.createElement("img");
                 img.src = `../images/fuse_pieces/${occupantConfig}.png`;
 
                 let li = document.createElement("li");
-                li.id = `${i}${j}`;
+                li.id = `${j}${i}`;
                 li.classList.add("fuse");
 
                 if (occupant.connectK) {
