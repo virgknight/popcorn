@@ -1,12 +1,30 @@
 import Grid from "./grid.js";
+import Timer from "./timer.js";
 
 class Game {
     constructor() {
         this.gridObj = new Grid ();
         this.score = 0;
         this.kernelsRemaining = 10;
+        
         this.level = 1;
-        this.gameOver = false;
+        this.timer = new Timer (this.outOfTime.bind(this));
+    }
+
+    start () {
+        this.timer.start();
+    }
+
+    outOfTime () {
+        if (this.kernelsRemaining > 0) {
+            this.gameOverMessage();
+            return;
+        }
+    }
+
+    gameOverMessage() {
+        document.getElementById("final-score").innerHTML = `Final score: ${this.score} points`;
+        document.getElementById("modal").classList.remove("hidden");
     }
 
     getFuse (pos) {
@@ -28,7 +46,7 @@ class Game {
         const burntFuses = [];
         for (let i = 0; i < 6; i++) {
             for (let j = 0; j < 9; j++) {
-                let fusePiece = this.gridObj.grid[i][j];
+                let fusePiece = this.getFuse([i,j]);
                 if (fusePiece.connectF && fusePiece.connectK) {
                     burntFuses.push([i, j]);
                 }
@@ -55,6 +73,7 @@ class Game {
         this.kernelsRemaining -= numKernelsPopped;
         if (this.kernelsRemaining <= 0) {
             this.kernelsRemaining = 0;
+            this.levelUpMessage();
         }
     }
 
@@ -67,6 +86,9 @@ class Game {
         this.gridObj.refreshFuseConnections();
     }
 
+    levelUpMessage () {
+        this.timer.stop();
+    }
 }
 
 export default Game;

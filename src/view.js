@@ -1,5 +1,4 @@
 import Game from "./game.js";
-import Timer from "./timer.js";
 
 const BORDERITEMS = {
     "flame": "../images/flame.png",
@@ -8,18 +7,35 @@ const BORDERITEMS = {
 
 class View {
     constructor() {
+        this.setUpBorderItems();
+        this.startNewGame();
+    }
+
+    startNewGame() {
         this.game = new Game();
         this.refreshSidebar();
         this.setUpViewableGrid();
-        this.setUpBorderItems();
         this.bindEvents();
+        this.game.start();
+        this.checkForDetonation();
+    }
+
+    restartGame() {
+        // hide modal
+        document.getElementById("modal").classList.add("hidden");
+        // clear out current fuse pieces
+        document.querySelectorAll("li.fuse").forEach((li) => {
+            li.remove();
+        });
+        // start new game
+        this.startNewGame();
     }
 
     refreshSidebar() {
-        let currentscore = document.getElementById("current-score");
+        const currentscore = document.getElementById("current-score");
         currentscore.innerHTML = `${this.game.score}`;
 
-        let kernelsremaining = document.getElementById("kernels-remaining");
+        const kernelsremaining = document.getElementById("kernels-remaining");
         kernelsremaining.innerHTML = `${this.game.kernelsRemaining}`;
     }
 
@@ -81,6 +97,13 @@ class View {
         });
     }
 
+    checkForDetonation() {
+        const that = this;
+        if (this.game.canDetonate()) {
+            setTimeout(that.detonateSequence.bind(that), 1000);
+        }
+    }
+
     handleFuseClick(event) {
         const clickedFuseId = event.currentTarget.id;
         const pos = clickedFuseId.split('')
@@ -88,10 +111,7 @@ class View {
         this.game.rotateFuse(pos);
         this.refreshViewableGrid();
 
-        const that = this;
-        if (this.game.canDetonate()) {
-            setTimeout(that.detonateSequence.bind(that), 1000);
-        }
+        this.checkForDetonation();
     }
 
     detonateSequence() {
@@ -113,10 +133,7 @@ class View {
         this.refreshViewableGrid();
         this.refreshSidebar();
 
-        const that = this;
-        if (this.game.canDetonate()) {
-            setTimeout(that.detonateSequence.bind(that), 1000);
-        }
+        this.checkForDetonation();
     }
 
     refreshViewableGrid() {
