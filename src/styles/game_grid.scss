@@ -1,0 +1,30 @@
+figure.game-grid {
+    width: 330px;
+}
+
+figure.game-grid ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+figure.game-grid li, figure.game-grid img {
+    border-radius: 5px;
+}
+
+li.kernel-connected {
+    border: 1px solid green;
+}
+
+li.flame-connected {
+    border: 1px solid red;
+}
+
+li.kernel-connected.flame-connected {
+    border: 1px solid yellow;
+}
+
+.game-grid li:hover {
+    border: 1px solid gray;
+}

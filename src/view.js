@@ -1,4 +1,5 @@
-import Grid from "./grid.js";
+import Game from "./game.js";
+import Timer from "./timer.js";
 
 const BORDERITEMS = {
     "flame": "../images/flame.png",
@@ -6,18 +7,27 @@ const BORDERITEMS = {
 };
 
 class View {
-    constructor(gridObj) {
-        this.gridObj = gridObj;
+    constructor(game) {
+        this.game = game;
+        this.refreshSidebar();
         this.setUpViewableGrid();
         this.setUpBorderItems();
         this.bindEvents();
+    }
+
+    refreshSidebar() {
+        let currentscore = document.getElementById("current-score");
+        currentscore.innerHTML = `${this.game.score}`;
+
+        let kernelsremaining = document.getElementById("kernels-remaining");
+        kernelsremaining.innerHTML = `${this.game.kernelsRemaining}`;
     }
 
     setUpViewableGrid() {
         let ul = document.createElement("ul");
         for (let i = 8; i >= 0; i--) {
             for (let j = 0; j < 6; j++) {
-                let occupant = this.gridObj.grid[j][i];
+                let occupant = this.game.getFuse([j, i]);
                 let occupantConfig = occupant.fusePos.join('');
 
                 let img = document.createElement("img");
@@ -75,14 +85,38 @@ class View {
         const clickedFuseId = event.currentTarget.id;
         const pos = clickedFuseId.split('')
                     .map((str) => parseInt(str));
-        this.gridObj.rotate(pos);
+        this.game.rotateFuse(pos);
         this.refreshViewableGrid();
+
+        const that = this;
+        if (this.game.canDetonate()) {
+            setTimeout(that.detonateSequence.bind(that), 1000);
+        }
+    }
+
+    detonateSequence() {
+        const that = this;
+        if (this.game.canDetonate()) {
+            const burntFuses = this.game.detonate();
+            burntFuses.forEach((pos) => {
+                let fuseId = `${pos[0]}${pos[1]}`;
+                let img = document.getElementById(`${fuseId}`).children[0];
+                img.src = `..images/fuse_pieces/burnt.png`;
+            });
+            setTimeout(that.updateAfterDetonate.bind(that), 700);
+        }
+    }
+
+    updateAfterDetonate() {
+        this.game.updateAfterDetonate();
+        this.refreshViewableGrid();
+        this.refreshSidebar();
     }
 
     refreshViewableGrid() {
         document.querySelectorAll("li.fuse").forEach((li) => {
             const pos = li.id.split('').map((str) => parseInt(str));
-            let occupant = this.gridObj.grid[pos[0]][pos[1]];
+            let occupant = this.game.getFuse(pos);
             let occupantConfig = occupant.fusePos.join('');
 
             let img = li.children[0];

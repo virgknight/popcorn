@@ -1,7 +1,7 @@
-import Grid from "./grid";
+import Game from "./game";
 import View from "./view";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const grid = new Grid();
-    const view = new View(grid);
+    const game = new Game ();
+    const view = new View(game);
 });

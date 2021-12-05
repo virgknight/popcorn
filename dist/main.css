@@ -55,6 +55,37 @@ table {
   border-spacing: 0;
 }
 
+figure.game-grid {
+  width: 330px;
+}
+
+figure.game-grid ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+figure.game-grid li, figure.game-grid img {
+  border-radius: 5px;
+}
+
+li.kernel-connected {
+  border: 1px solid green;
+}
+
+li.flame-connected {
+  border: 1px solid red;
+}
+
+li.kernel-connected.flame-connected {
+  border: 1px solid yellow;
+}
+
+.game-grid li:hover {
+  border: 1px solid gray;
+}
+
 body {
   width: 60%;
   margin: 0 auto;
@@ -87,44 +118,25 @@ img {
   justify-content: center;
 }
 
-figure.game-grid {
-  width: 330px;
-}
-
-figure.game-grid ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-figure.game-grid li, figure.game-grid img {
-  border-radius: 5px;
-}
-
 .sidebar {
-  border: 1px solid black;
+  background-color: white;
+  text-align: center;
   height: 50%;
   width: 20%;
+}
+
+.sidebar h3 {
+  text-decoration: underline;
+}
+
+#current-score, #kernels-remaining {
+  background-color: whitesmoke;
+  margin: 10px;
+  border: 1px solid darkgray;
+  font-size: 28;
 }
 
 li {
   border: 1px solid whitesmoke;
   padding: 1px;
-}
-
-li.kernel-connected {
-  border: 1px solid green;
-}
-
-li.flame-connected {
-  border: 1px solid red;
-}
-
-li.kernel-connected.flame-connected {
-  border: 1px solid yellow;
-}
-
-.game-grid li:hover {
-  border: 2px solid gray;
 }
