@@ -7,8 +7,8 @@ const BORDERITEMS = {
 };
 
 class View {
-    constructor(game) {
-        this.game = game;
+    constructor() {
+        this.game = new Game();
         this.refreshSidebar();
         this.setUpViewableGrid();
         this.setUpBorderItems();
@@ -77,11 +77,11 @@ class View {
     bindEvents() {
         const that = this;
         document.querySelectorAll("li.fuse").forEach((li) => {
-            li.addEventListener("click", that.handleClick.bind(that));
+            li.addEventListener("click", that.handleFuseClick.bind(that));
         });
     }
 
-    handleClick(event) {
+    handleFuseClick(event) {
         const clickedFuseId = event.currentTarget.id;
         const pos = clickedFuseId.split('')
                     .map((str) => parseInt(str));
@@ -101,16 +101,22 @@ class View {
             burntFuses.forEach((pos) => {
                 let fuseId = `${pos[0]}${pos[1]}`;
                 let img = document.getElementById(`${fuseId}`).children[0];
-                img.src = `..images/fuse_pieces/burnt.png`;
+                img.src = `../images/fuse_pieces/burnt.png`;
             });
             setTimeout(that.updateAfterDetonate.bind(that), 700);
         }
     }
 
     updateAfterDetonate() {
+        console.log(this.game.gridObj);
         this.game.updateAfterDetonate();
         this.refreshViewableGrid();
         this.refreshSidebar();
+
+        const that = this;
+        if (this.game.canDetonate()) {
+            setTimeout(that.detonateSequence.bind(that), 1000);
+        }
     }
 
     refreshViewableGrid() {

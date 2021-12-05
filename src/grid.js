@@ -48,18 +48,20 @@ class Grid {
     }
 
     checkFuseConnections (startIdx, callback, subject) {
-        let queue = [];
-        for (let times=0; times<2; times++){
-            for (let i=0; i<9; i++) {
-                queue.push([startIdx, i]);
-            }
-        }
-        let checked = [];
-
         // Use BFS node traversal to generate flame/kernel connections
+        // Generate queue; add first column twice in case fuse in same row connects it
+        let queue = [];
+        for (let i=0; i<9; i++) {
+            queue.push([startIdx, i]);
+        }
+        // to be populated with key: indices checked, value: number of times they've been checked
+        let checked = {};
+
         while (queue.length > 0) {
             let idx = queue.shift();
-            checked.push(JSON.stringify(idx));
+            // add to checked object if not already there
+            if (!([JSON.stringify(idx)] in checked)) checked[JSON.stringify(idx)] = 0;
+            checked[JSON.stringify(idx)] ++;
 
             let fuse = this.grid[idx[0]][idx[1]];
             let neighbors = fuse.getConnectedNeighbors();
@@ -69,8 +71,16 @@ class Grid {
 
             if (condition && neighbors.length > 0) {
                 neighbors.forEach((neighbor) => {
+                    // must convert to string to allow JS to check for equality
                     let neighborStr = JSON.stringify(neighbor);
-                    if (!checked.includes(neighborStr)) {
+                    // if that neighbor hasn't been checked yet
+                    if (!(neighborStr in checked) || 
+                        // or if they are an edge piece but have not been checked from all three sides
+                        (checked[neighborStr] < 3) ||
+                        // or if they are not an edge piece but have not been checked from all four sides
+                        (checked[neighborStr] < 4 && ![0, 5].includes(neighbor[0]))
+                    ) {
+                        // then add to queue to be checked (or checked again)
                         queue.push(neighbor);
                     }
                 });

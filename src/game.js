@@ -5,6 +5,8 @@ class Game {
         this.gridObj = new Grid ();
         this.score = 0;
         this.kernelsRemaining = 10;
+        this.level = 1;
+        this.gameOver = false;
     }
 
     getFuse (pos) {
@@ -26,14 +28,15 @@ class Game {
         const burntFuses = [];
         for (let i = 0; i < 6; i++) {
             for (let j = 0; j < 9; j++) {
-                if (this.gridObj.grid[i][j].connectF && this.gridObj.grid[i][j].connectK) {
+                let fusePiece = this.gridObj.grid[i][j];
+                if (fusePiece.connectF && fusePiece.connectK) {
                     burntFuses.push([i, j]);
                 }
             }
         }
         const numKernelsPopped = this.getKernelsPopped(burntFuses);
         this.incrementScore(numKernelsPopped);
-        this.decrementFusesRemaining(numKernelsPopped);
+        this.decrementKernelsRemaining(numKernelsPopped);
         this.gridObj.detonate(burntFuses);
         return burntFuses;
     }
@@ -43,19 +46,20 @@ class Game {
         const that = this;
         burntFuses.filter((pos) => pos[0] === 5)
             .forEach((pos) => {
-                console.log(pos);
-                console.log(that.gridObj);
                 if (that.getFuse(pos).right() === 1) numKernelsPopped++;
             });
         return numKernelsPopped;
     }
 
-    decrementFusesRemaining(numKernelsPopped) {
+    decrementKernelsRemaining(numKernelsPopped) {
         this.kernelsRemaining -= numKernelsPopped;
+        if (this.kernelsRemaining <= 0) {
+            this.kernelsRemaining = 0;
+        }
     }
 
     incrementScore (numKernelsPopped) {
-        this.score += numKernelsPopped * 100 + Math.floor(numKernelsPopped/2) * 50;
+        this.score += numKernelsPopped * 100 + Math.floor(numKernelsPopped/1.5) * 75;
     }
 
     updateAfterDetonate () {
