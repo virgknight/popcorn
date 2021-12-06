@@ -17,14 +17,15 @@ body {
 }
 
 h1 {
-    font-size: 42;
-    font-weight: bold;
-    font-family: "Luminari", fantasy;
+    font-size: 52;
+    font-weight: bolder;
     padding: 10px;
-    margin: 10px;
-    background-color: red;
-    color: white;
-    -webkit-text-stroke: 1px blanchedalmond;
+    margin: 20px;
+    text-align: center;
+    color: black;
+    background-image: url("../images/marquee.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 img {
@@ -44,7 +45,7 @@ img {
     // background-color: gainsboro;
     background-image: linear-gradient(to right, silver, gainsboro);
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 5px 10px 5px;
 }
 
 li {
@@ -77,7 +78,7 @@ li {
 }
 
 .sidebar {
-    background-color: white;
+    background-color: cornsilk;
     border-radius: 5px;
     text-align: center;
     height: 50%;

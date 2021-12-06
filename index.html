@@ -44,7 +44,7 @@
     <h1>Popcorn Popper</h1>
 
     <div id="game-components">
-        <!-- Sidebar containing score, kernel count, timer, and level -->
+        <!-- Sidebar containing level, score, kernel count, timer, quit option -->
         <aside class="sidebar">
             <section class="level-box">
                 <h3 id="current-level"> Level 1</h3>
@@ -64,6 +64,8 @@
                 <h3>Time Remaining</h3>
                 <div id="timer" class="sidebar-stats">60</div>
             </section>
+            <br>
+            <button id="quit-button">Quit</button>
         </aside>
 
         <!-- actual game board components -->
@@ -73,6 +75,7 @@
             <ul class="kernels"></ul>
         </div>
 
+        <!-- canvas to render popcorn pieces -->
         <canvas width="0px" height="0px" id="popcorn-canvas"></canvas>
     </div>
 

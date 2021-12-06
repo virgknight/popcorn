@@ -75,22 +75,26 @@ figure.fuse-grid li, figure.fuse-grid img {
   border-radius: 5px;
 }
 
-li.kernel-connected {
-  border: 1px solid green;
-}
-
-li.flame-connected {
-  border: 1px solid red;
-}
-
-li.kernel-connected.flame-connected {
-  border: 1px solid yellow;
-}
-
 .fuse-grid li:hover {
   border: 1px solid gray;
 }
 
+.exploding {
+  transform: scale(1);
+  animation: pulse 0.7s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.2);
+  }
+  60% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .hidden {
   display: none;
 }
@@ -165,14 +169,15 @@ body {
 }
 
 h1 {
-  font-size: 42;
-  font-weight: bold;
-  font-family: "Luminari", fantasy;
+  font-size: 52;
+  font-weight: bolder;
   padding: 10px;
-  margin: 10px;
-  background-color: red;
-  color: white;
-  -webkit-text-stroke: 1px blanchedalmond;
+  margin: 20px;
+  text-align: center;
+  color: black;
+  background-image: url("../images/marquee.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 img {
@@ -191,7 +196,7 @@ img {
   justify-content: center;
   background-image: linear-gradient(to right, silver, gainsboro);
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 5px 10px 5px;
 }
 
 li {
@@ -223,7 +228,7 @@ li {
 }
 
 .sidebar {
-  background-color: white;
+  background-color: cornsilk;
   border-radius: 5px;
   text-align: center;
   height: 50%;

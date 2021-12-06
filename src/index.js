@@ -8,4 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let levelUpButton = document.getElementById("next-level-button");
     levelUpButton.addEventListener("click", () => { view.startNewLevel() });
+
+    let quitButton = document.getElementById("quit-button");
+    quitButton.addEventListener("click", () => { view.stopGame() });
 });

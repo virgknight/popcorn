@@ -21,10 +21,8 @@ class Game {
     }
 
     outOfTime () {
-        if (this.kernelsRemaining > 0) {
-            this.gameOverMessage();
-            return;
-        }
+        this.gameOverMessage();
+        return;
     }
 
     gameOverMessage() {

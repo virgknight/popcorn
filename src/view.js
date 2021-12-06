@@ -44,6 +44,11 @@ class View {
         this.startGame();
     }
 
+    stopGame () {
+        this.game.timer.stop();
+        this.game.outOfTime();
+    }
+
     hideModals() {
         const modals = document.getElementsByClassName("modal");
         for (let i = 0; i < modals.length; i++) {
@@ -68,7 +73,12 @@ class View {
                 let occupantConfig = occupant.fusePos.join('');
 
                 let img = document.createElement("img");
-                img.src = `../images/fuse_pieces/${occupantConfig}.png`;
+                // determine color of piece
+                let color = "default";
+                if (occupant.connectF && occupant.connectK) {color = "yellow";}
+                else if (occupant.connectK) {color = "green";}
+                else if (occupant.connectF) {color = "red";}
+                img.src = `../images/fuse_pieces/${color}/${occupantConfig}.png`;
 
                 let li = document.createElement("li");
                 li.id = `${j}${i}`;
@@ -94,7 +104,6 @@ class View {
         let kernelList = document.querySelector("ul.kernels");
 
         for (let i = 0; i < 9; i++) {
-            // No DRYer way to do this?
             let flameLi = document.createElement("li");
             let flameImg = document.createElement("img");
             flameImg.classList.add('pulsing');
@@ -143,17 +152,17 @@ class View {
                 let fuseId = `${pos[0]}${pos[1]}`;
                 let img = document.getElementById(`${fuseId}`).children[0];
                 img.src = `../images/fuse_pieces/burnt.png`;
+                img.classList.add("exploding");
             });
             setTimeout(that.updateAfterDetonate.bind(that), 700);
         }
     }
 
     updateAfterDetonate() {
-        console.log(this.game.gridObj);
         this.game.updateAfterDetonate();
         this.refreshViewableGrid();
         this.refreshSidebar();
-
+        document.getElementById("bowl").src = "./images/filled-bowl.png";
         this.checkForDetonation();
     }
 
@@ -164,14 +173,13 @@ class View {
             let occupantConfig = occupant.fusePos.join('');
 
             let img = li.children[0];
-            img.src = `../images/fuse_pieces/${occupantConfig}.png`;
-
-            if (occupant.connectK !== li.classList.contains("kernel-connected")) {
-                li.classList.toggle("kernel-connected");
-            };
-            if (occupant.connectF !== li.classList.contains("flame-connected")) {
-                li.classList.toggle("flame-connected");
-            };
+            if (img.classList.contains("exploding")) img.classList.remove("exploding");
+            
+            let color = "default";
+            if (occupant.connectF && occupant.connectK) { color = "yellow"; }
+            else if (occupant.connectK) { color = "green"; }
+            else if (occupant.connectF) { color = "red"; }
+            img.src = `../images/fuse_pieces/${color}/${occupantConfig}.png`;
         })
     }
 

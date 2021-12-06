@@ -18,18 +18,18 @@ figure.fuse-grid li, figure.fuse-grid img {
     border-radius: 5px;
 }
 
-li.kernel-connected {
-    border: 1px solid green;
-}
-
-li.flame-connected {
-    border: 1px solid red;
-}
-
-li.kernel-connected.flame-connected {
-    border: 1px solid yellow;
-}
-
 .fuse-grid li:hover {
     border: 1px solid gray;
+}
+
+// explosions
+.exploding {
+    transform: scale(1);
+	animation: pulse 0.7s infinite;
+}
+
+@keyframes pulse {
+    0%{transform: scale(0.2)}
+    60%{transform: scale(0.7)}
+    100%{transform: scale(1.0)}
 }
