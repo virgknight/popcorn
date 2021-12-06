@@ -9,6 +9,7 @@ In Popcorn Popper, the user will be able to:
 * Play through different levels of increasing difficulty
 * Rotate fuse pieces on a click
 * Construct fuse paths that ignite one or more popcorn kernels
+* If a continuous fuse path is accidentally created, click out of it within a second-long grace period
 
 In addition, this project will include:
 * A production README
