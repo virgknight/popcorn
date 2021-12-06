@@ -5,7 +5,7 @@
     display: none;
 }
 
-#modal {
+.modal {
   z-index: 998;
   position: fixed;
   top: 0%;
@@ -15,7 +15,7 @@
   background: rgba(0, 0, 0, .3);
 }
 
-#modal-content {
+.modal-content {
   z-index: 999;
   position: fixed;
   background: white;
@@ -107,4 +107,13 @@ img {
 li {
     border: 1px solid whitesmoke;
     padding: 1px;
+}
+
+#bowl {
+    float: right;
+}
+
+#bowl img {
+    width: 200px;
+    height: 150px;
 }

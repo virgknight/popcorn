@@ -21,8 +21,13 @@ class View {
     }
 
     restartGame() {
-        // hide modal
-        document.getElementById("modal").classList.add("hidden");
+        // hide modals
+        const modals = document.getElementsByClassName("modal");
+        for (let i = 0; i < modals.length; i++) {
+            let modal = modals.item(i);
+            console.log(modal);
+            if (!modal.classList.contains("hidden")) modal.classList.add("hidden");
+        }
         // clear out current fuse pieces
         document.querySelectorAll("li.fuse").forEach((li) => {
             li.remove();

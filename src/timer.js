@@ -17,7 +17,6 @@ class Timer {
 
     decrement () {
         this.currentSeconds -= 1;
-        console.log(this.currentSeconds);
         if (this.currentSeconds === 0) {
             this.currentSeconds = 0;
             this.stop();

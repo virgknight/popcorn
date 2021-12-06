@@ -14,8 +14,8 @@
 <body>
     <h1>Popcorn Popper</h1>
 
-    <div id="modal" class="hidden">
-        <div id="modal-content">
+    <div id="lose-modal" class="hidden modal">
+        <div class="modal-content">
             <div class="times-up-container">
                 <img src="../images/popcorn.png">
                 <p>Time's Up!</p>
@@ -23,6 +23,14 @@
             </div>
             <p id="final-score"></p>
             <button id="new-game-button">New Game</button>
+        </div>
+    </div>
+
+    <div id="level-passed-modal" class="hidden modal">
+        <div class="modal-content">
+            <p>Well done! :)</p>
+            <br>
+            <button id="next-level-button">New Game</button>
         </div>
     </div>
 
@@ -51,7 +59,7 @@
         </div>
     </div>
 
-    <div id="bowl"></div>
+    <div id="bowl"><img src="./images/popcorn_bowl.jpeg"></div>
 
     <nav></nav>
 
