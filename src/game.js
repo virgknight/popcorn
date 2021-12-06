@@ -1,11 +1,14 @@
 import Grid from "./grid.js";
 import Timer from "./timer.js";
 
+const LEVEL_UP_MESSAGES = ["Well done!", "Nice going!", "America's Next Pop Model!", "You're a pop star!", "Way to go!", "Pop-notch work!", "You're on top of the pop!", "Pop off sis!"]
+
 class Game {
     constructor() {
         this.gridObj = new Grid ();
         this.score = 0;
-        this.kernelsRemaining = 3;
+        this.baseKernelsRemaining = 3; // change to 7 or 8 after development
+        this.kernelsRemaining = this.baseKernelsRemaining;
         
         this.level = 1;
         this.timer = new Timer (this.outOfTime.bind(this));
@@ -25,6 +28,23 @@ class Game {
     gameOverMessage() {
         document.getElementById("final-score").innerHTML = `Final score: ${this.score} points`;
         document.getElementById("lose-modal").classList.remove("hidden");
+    }
+
+    levelUpMessage() {
+        this.timer.stop();
+        document.getElementById("level-up-message").innerHTML = LEVEL_UP_MESSAGES[Math.floor(Math.random() * LEVEL_UP_MESSAGES.length)];
+        document.getElementById("level-up-score").innerHTML = `Current score: ${this.score} points`;
+        document.getElementById("level-passed-modal").classList.remove("hidden");
+    }
+
+    makeNewLevel() {
+        // update level and level display
+        this.level++;
+        document.getElementById("current-level").innerHTML = `${this.level}`;
+        // make new game grid
+        this.gridObj = new Grid ();
+        // update kernel count (+2 with each successive round)
+        this.kernelsRemaining = this.baseKernelsRemaining + (this.level - 1) * 2;
     }
 
     getFuse (pos) {
@@ -77,10 +97,6 @@ class Game {
         }
     }
 
-    levelUpMessage() {
-        this.timer.stop();
-        document.getElementById("level-passed-modal").classList.remove("hidden");
-    }
 
     incrementScore (numKernelsPopped) {
         this.score += numKernelsPopped * 100 + Math.floor(numKernelsPopped/1.5) * 75;

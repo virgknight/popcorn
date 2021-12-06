@@ -8,11 +8,12 @@ const BORDERITEMS = {
 class View {
     constructor() {
         this.setUpBorderItems();
-        this.startNewGame();
+        
+        this.game = new Game();
+        this.startGame();
     }
 
-    startNewGame() {
-        this.game = new Game();
+    startGame() {
         this.refreshSidebar();
         this.setUpViewableGrid();
         this.bindEvents();
@@ -20,7 +21,27 @@ class View {
         this.checkForDetonation();
     }
 
+    startNewLevel() {
+        // hide modal box(es)
+        this.hideModals();
+        // create new level
+        this.game.makeNewLevel();
+        // clear out old level
+        document.querySelectorAll("li.fuse").forEach((li) => {
+            li.remove();
+        });
+        // begin game
+        this.startGame();
+    }
+
     restartGame() {
+        this.hideModals();
+        // start new game
+        this.game = new Game();
+        this.startGame();
+    }
+
+    hideModals() {
         // hide modals
         const modals = document.getElementsByClassName("modal");
         for (let i = 0; i < modals.length; i++) {
@@ -28,12 +49,6 @@ class View {
             console.log(modal);
             if (!modal.classList.contains("hidden")) modal.classList.add("hidden");
         }
-        // clear out current fuse pieces
-        document.querySelectorAll("li.fuse").forEach((li) => {
-            li.remove();
-        });
-        // start new game
-        this.startNewGame();
     }
 
     refreshSidebar() {

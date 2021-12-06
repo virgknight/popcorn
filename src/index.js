@@ -8,5 +8,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let levelUpButton = document.getElementById("next-level-button");
     // CHANGE THIS TO CORRECT CALLBACK WHEN LEVEL LOGIC IS ADDED
-    levelUpButton.addEventListener("click", () => { view.restartGame() });
+    levelUpButton.addEventListener("click", () => { view.startNewLevel() });
 });

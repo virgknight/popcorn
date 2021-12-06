@@ -7,7 +7,8 @@ class Timer {
     }
 
     start () {
-        this.currentSeconds = this.totalSeconds;
+        this.currentSeconds = this.totalSeconds; //reset
+        document.getElementById("timer").innerHTML = `${this.currentSeconds}`; // flash 60 before countdown
         this.interval = setInterval(this.decrement.bind(this), 1000);
     }
 

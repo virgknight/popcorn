@@ -14,41 +14,50 @@
 <body>
     <h1>Popcorn Popper</h1>
 
+    <!-- Modal shown when game is lost -->
     <div id="lose-modal" class="hidden modal">
         <div class="modal-content">
             <div class="times-up-container">
-                <img src="../images/popcorn.png">
                 <p>Time's Up!</p>
-                <img src="../images/popcorn.png">
             </div>
             <p id="final-score"></p>
             <button id="new-game-button">New Game</button>
         </div>
     </div>
 
+    <!-- Modal shown at the end of each level -->
     <div id="level-passed-modal" class="hidden modal">
         <div class="modal-content">
-            <p>Well done! :)</p>
+            <p id="level-up-message"></p>
             <br>
-            <button id="next-level-button">New Game</button>
+            <p id="level-up-score"></p>
+            <br>
+            <button id="next-level-button">Next Level</button>
         </div>
     </div>
 
+    <!-- Actual game components -->
     <div id="game-components">
+        <!-- Sidebar containing score, kernel count, timer, and level -->
         <aside class="sidebar">
             <section class="score-box">
                 <h3>Score:</h3>
-                <div id="current-score"></div>
+                <div id="current-score" class="sidebar-stats"></div>
+            </section>
+            <br>
+            <section class="level-box">
+                <h3>Level:</h3>
+                <div id="current-level" class="sidebar-stats">1</div>
             </section>
             <br>
             <section class="kernels-box">
                 <h3>Kernels Remaining:</h3>
-                <div id="kernels-remaining"></div>
+                <div id="kernels-remaining" class="sidebar-stats"></div>
             </section>
             <br>
             <section class="time-box">
                 <h3>Time Remaining:</h3>
-                <div id="timer">60</div>
+                <div id="timer" class="sidebar-stats">60</div>
             </section>
         </aside>
 
