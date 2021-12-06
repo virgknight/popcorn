@@ -7,20 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
     <script src="./dist/main.js"></script>
     <title>Popcorn Popper</title>
 </head>
 
 <body>
-    <h1>Popcorn Popper</h1>
 
     <!-- Modal shown when game is lost -->
     <div id="lose-modal" class="hidden modal">
         <div class="modal-content">
             <div class="times-up-container">
-                <p>Time's Up!</p>
+                <p class="modal-header">Can't pop 'em all...</p>
             </div>
+            <br>
             <p id="final-score"></p>
+            <br>
             <button id="new-game-button">New Game</button>
         </div>
     </div>
@@ -28,7 +30,7 @@
     <!-- Modal shown at the end of each level -->
     <div id="level-passed-modal" class="hidden modal">
         <div class="modal-content">
-            <p id="level-up-message"></p>
+            <p id="level-up-message" class="modal-header"></p>
             <br>
             <p id="level-up-score"></p>
             <br>
@@ -37,38 +39,49 @@
     </div>
 
     <!-- Actual game components -->
+    <div class="game-space">
+
+    <h1>Popcorn Popper</h1>
+
     <div id="game-components">
         <!-- Sidebar containing score, kernel count, timer, and level -->
         <aside class="sidebar">
+            <section class="level-box">
+                <h3 id="current-level"> Level 1</h3>
+            </section>
+            <br>
             <section class="score-box">
-                <h3>Score:</h3>
+                <h3>Score</h3>
                 <div id="current-score" class="sidebar-stats"></div>
             </section>
             <br>
-            <section class="level-box">
-                <h3>Level:</h3>
-                <div id="current-level" class="sidebar-stats">1</div>
-            </section>
-            <br>
             <section class="kernels-box">
-                <h3>Kernels Remaining:</h3>
+                <h3>Kernels Remaining</h3>
                 <div id="kernels-remaining" class="sidebar-stats"></div>
             </section>
             <br>
             <section class="time-box">
-                <h3>Time Remaining:</h3>
+                <h3>Time Remaining</h3>
                 <div id="timer" class="sidebar-stats">60</div>
             </section>
         </aside>
 
+        <!-- actual game board components -->
         <div class="game-board">
             <ul class="flames"></ul>
-            <figure class="game-grid"></figure>
+            <figure class="fuse-grid"></figure>
             <ul class="kernels"></ul>
         </div>
+
+        <canvas width="0px" height="0px" id="popcorn-canvas"></canvas>
     </div>
 
-    <div id="bowl"><img src="./images/popcorn_bowl.jpeg"></div>
+    </div>
+
+    <aside class="kitten-and-bowl">
+        <img id="kitten" src="./images/kittens/waiting.png">
+        <img id="bowl" src="./images/empty-bowl.png">
+    </aside>
 
     <nav></nav>
 

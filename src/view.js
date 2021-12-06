@@ -8,7 +8,6 @@ const BORDERITEMS = {
 class View {
     constructor() {
         this.setUpBorderItems();
-        
         this.game = new Game();
         this.startGame();
     }
@@ -24,29 +23,31 @@ class View {
     startNewLevel() {
         // hide modal box(es)
         this.hideModals();
-        // create new level
-        this.game.makeNewLevel();
         // clear out old level
         document.querySelectorAll("li.fuse").forEach((li) => {
             li.remove();
         });
+        // create new level
+        this.game.makeNewLevel();
         // begin game
         this.startGame();
     }
 
     restartGame() {
         this.hideModals();
+        // clear out old game
+        document.querySelectorAll("li.fuse").forEach((li) => {
+            li.remove();
+        });
         // start new game
         this.game = new Game();
         this.startGame();
     }
 
     hideModals() {
-        // hide modals
         const modals = document.getElementsByClassName("modal");
         for (let i = 0; i < modals.length; i++) {
             let modal = modals.item(i);
-            console.log(modal);
             if (!modal.classList.contains("hidden")) modal.classList.add("hidden");
         }
     }
@@ -84,7 +85,7 @@ class View {
                 ul.appendChild(li);
             }
         }
-        const gameGrid = document.querySelector(".game-grid");
+        const gameGrid = document.querySelector(".fuse-grid");
         gameGrid.appendChild(ul);
     }
 
@@ -95,8 +96,8 @@ class View {
         for (let i = 0; i < 9; i++) {
             // No DRYer way to do this?
             let flameLi = document.createElement("li");
-            flameLi.classList.add(`${i}`)
             let flameImg = document.createElement("img");
+            flameImg.classList.add('pulsing');
             flameImg.src = BORDERITEMS["flame"];
             flameLi.appendChild(flameImg);
             flameList.appendChild(flameLi);

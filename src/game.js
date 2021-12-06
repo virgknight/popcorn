@@ -15,6 +15,8 @@ class Game {
     }
 
     start () {
+        document.getElementById("kitten").src = "./images/kittens/waiting.png";
+        document.getElementById("bowl").src = "./images/empty-bowl.png";
         this.timer.start();
     }
 
@@ -26,6 +28,7 @@ class Game {
     }
 
     gameOverMessage() {
+        document.getElementById("kitten").src = "./images/kittens/sad.png";
         document.getElementById("final-score").innerHTML = `Final score: ${this.score} points`;
         document.getElementById("lose-modal").classList.remove("hidden");
     }
@@ -40,7 +43,7 @@ class Game {
     makeNewLevel() {
         // update level and level display
         this.level++;
-        document.getElementById("current-level").innerHTML = `${this.level}`;
+        document.getElementById("current-level").innerHTML = `Level ${this.level}`;
         // make new game grid
         this.gridObj = new Grid ();
         // update kernel count (+2 with each successive round)

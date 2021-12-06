@@ -1,62 +1,19 @@
 @import './styles/reset.scss';
 @import './styles/game_grid.scss';
+@import './styles/modals.scss';
 
-.hidden {
-    display: none;
-}
-
-.modal {
-  z-index: 998;
-  position: fixed;
-  top: 0%;
-  bottom: 0%;
-  left: 0%;
-  right: 0%;
-  background: rgba(0, 0, 0, .3);
-}
-
-.modal-content {
-  z-index: 999;
-  position: fixed;
-  background: white;
-  border-radius: 10px;
-  font-size: 20px;
-  width: 25%;
-  top: 25%;
-  left: 37.5%;
-  text-align: center;
-  box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 30px;
-}
-
-#modal-content .times-up-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 36px;
-}
-
-button {
-    cursor: pointer;
-    font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
-    border-radius: 3px;
-    margin-top: 5px;
-}
-
-button:hover {
-    background: crimson;
-    color: white;
-}
 
 body {
+    // background-color: #f5f5f5;
+    // background-image: linear-gradient(to right, #f7d2d5, #f7d2d5 10px, #f5f5f5 10px, #f5f5f5 );
+    // background-size: 20px 100%;
+    background-image: url("../images/background.jpeg");
+    font-family: 'Nova Flat';
+}
+
+.game-space {
     width: 60%;
     margin: 0 auto;
-    background-color: whitesmoke;
 }
 
 h1 {
@@ -77,43 +34,94 @@ img {
 
 #game-components {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .game-board {
     display: flex;
     align-items: center;
     justify-content: center;
+    // background-color: gainsboro;
+    background-image: linear-gradient(to right, silver, gainsboro);
+    border-radius: 5px;
+    padding: 10px;
 }
 
+li {
+    border: 1px solid transparent;
+    padding: 1px;
+}
+
+.kitten-and-bowl {
+    float: right;
+    padding-right: 50px;
+    position: relative;
+}
+
+
+#kitten, #bowl {
+    position: absolute;
+    right: 140px;
+}
+
+#kitten {
+    width: 150px;
+    height: 200px;
+    top: -100px;
+}
+
+#bowl {
+    width: 150px;
+    height: 150px;
+    top: -25px;
+}
 
 .sidebar {
     background-color: white;
+    border-radius: 5px;
     text-align: center;
     height: 50%;
     width: 20%;
+    padding: 10px;
 }
 
 .sidebar h3 {
-    text-decoration: underline;
+    margin: 3px;
+    font-family: 'Nova Flat';
+}
+
+#current-level {
+    font-size: 22px;
 }
 
 .sidebar-stats {
     background-color: whitesmoke;
-    margin: 10px;
+    margin: 5px;
     border: 1px solid darkgray;
     font-size: 28;
 }
 
-li {
-    border: 1px solid whitesmoke;
-    padding: 1px;
+// blinking text for timer when <5 seconds remain
+.blinking{
+    animation:blinkingText 1s infinite;
 }
 
-#bowl {
-    float: right;
+@keyframes blinkingText{
+    0%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
+    49%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
+    60%{ font-weight: bold; color: #000; text-shadow: none;}
+    99%{ font-weight: bold; color:#000; text-shadow: none;}
+    100%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
 }
 
-#bowl img {
-    width: 200px;
-    height: 150px;
+// pulsating flames
+.pulsing {
+    transform: scale(1);
+	animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%{transform: scale(0.8)}
+    60%{transform: scale(1.0)}
+    100%{transform: scale(0.8)}
 }

@@ -1,15 +1,20 @@
-figure.game-grid {
+figure.fuse-grid {
     width: 330px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: whitesmoke;
+    border: dotted 2px darkgray;
+    border-radius: 4px;
 }
 
-figure.game-grid ul {
+figure.fuse-grid ul {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-figure.game-grid li, figure.game-grid img {
+figure.fuse-grid li, figure.fuse-grid img {
     border-radius: 5px;
 }
 
@@ -25,6 +30,6 @@ li.kernel-connected.flame-connected {
     border: 1px solid yellow;
 }
 
-.game-grid li:hover {
+.fuse-grid li:hover {
     border: 1px solid gray;
 }
