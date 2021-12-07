@@ -17,15 +17,43 @@
     <div class="modal">
         <div id="instruction-content" class="modal-content">
             <p class="game-title">Popcorn Popper</p>
-            <p class="game-subtitle">Can you become a popcorn sensation?</p>
             <br>
-            <p class="instruction-text">Click on a fuse to rotate it clockwise.</p>
-            <p class="instruction-text">Turn the fuses to link a flame with one or more kernels to pop them!</p>
-            <p class="instruction-text">But hurry- you must pop enough for this popcorn-loving kitty before the movie starts or the show will not go on...</p>
+            <p class="instruction-text crimson">Can you become a popcorn sensation?</p>
+            <br>
+
+            <p class="instruction-text">Click on a <span class="bold">fuse piece</span> to rotate it clockwise. Fuse pieces can be rotated any number of times.</p>
+            <div class="fuse-container">
+                <img src="images/fuse_pieces/default/1111.png">
+                <img src="images/fuse_pieces/default/0101.png">
+                <img src="images/fuse_pieces/default/1100.png">
+                <img src="images/fuse_pieces/default/1110.png">
+            </div>
+            <br>
+
+            <p class="instruction-text">A <span class="crimson bold">red</span> fuse links to a flame; a <span class="green bold">green</span> fuse links to
+                a kernel.</p>
+            <div class="fuse-container">
+                <img class="intro-border-piece pulsing" src="images/flame.png">
+                <img class="spaced" src="images/fuse_pieces/red/1011.png">
+                <img src="images/fuse_pieces/green/1100.png">
+                <img class="intro-border-piece" src="images/kernel.png">
+            </div>
+            <br>
+
+            <p class="instruction-text">Rotate pieces to create a continuous fuse path between a flame and a kernel to <span class="bold">pop</span> a piece of <span class="bold">popcorn!</span></p>
+            <br>
+
+            <p class="instruction-text"><span class="bold" style="text-decoration: underline;">But hurry</span>- you must pop enough 
+                    for this popcorn-loving kitty before the movie starts or the show will not go on...</p>
             <br>
             <button id="start-game-button">Let's get popping!</button>
+            <img id="intro-kitty" src="/images/kittens/intro.png">
         </div>
     </div>
+
+    <!-- curtains behind intro modal -->
+    <img class="curtain left" src="images/curtain.jpeg">
+    <img class="curtain right" src="images/curtain.jpeg">
 
     <!-- Modal shown when game is lost -->
     <div id="lose-modal" class="hidden modal">
@@ -69,12 +97,12 @@
             </section>
             <br>
             <section class="kernels-box">
-                <h3>Kernels to Level Up</h3>
+                <h3>Kernels to Next Level</h3> 
                 <div id="kernels-remaining" class="sidebar-stats"></div>
             </section>
             <br>
             <section class="time-box">
-                <h3>Time Remaining</h3>
+                <h3>Seconds til Showtime</h3>
                 <div id="timer" class="sidebar-stats">60</div>
             </section>
             <br>

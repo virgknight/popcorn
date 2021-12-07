@@ -20,6 +20,19 @@ class View {
         this.checkForDetonation();
     }
 
+    drawBackCurtains() {
+        const curtainL = document.querySelector(".curtain.left");
+        curtainL.classList.add("lightSpeedOutLeft");
+        const curtainR = document.querySelector(".curtain.right");
+        curtainR.classList.add("lightSpeedOutRight");
+        setTimeout(this.removeCurtains.bind(this), 1000);
+    }
+
+    removeCurtains() {
+        const curtains = document.querySelectorAll(".curtain");
+        curtains.forEach((curtain) => {curtain.classList.add("hidden")});
+    }
+
     startNewLevel() {
         // clear out old level
         document.querySelectorAll("li.fuse").forEach((li) => {
@@ -109,7 +122,7 @@ class View {
             flameList.appendChild(flameLi);
 
             let kernelLi = document.createElement("li");
-            kernelLi.classList.add(`${i}`);
+            kernelLi.classList.add(`${i}`, "kernel-img");
             let kernelImg = document.createElement("img");
             kernelImg.src = BORDERITEMS["kernel"];
             kernelLi.appendChild(kernelImg);

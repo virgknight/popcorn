@@ -36,10 +36,12 @@
 
 #instruction-content {
   background-image: url("../../images/marquee.jpeg");
-  background-size: 800px;
-  height: 50%;
-  width: 50%;
-  left: 25%;
+  background-size: 1200px;
+  height: 70%;
+  width: 60%;
+  top: 10%;
+  left: 20%;
+  line-height: 75%;
 }
 
 .modal-header {
@@ -71,16 +73,40 @@ button:hover {
 }
 
 .instruction-text {
-  font-size: 20px;
-  margin: 3px;
+  font-size: 17px;
+  margin: 2px;
 }
 
-.modal-content .small-text {
-  font-size: 12px;
-  text-align: right;
-}
-
-.game-subtitle {
-  font-size: 18px;
+.crimson {
   color: crimson;
+}
+
+.green {
+  color: mediumseagreen;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.fuse-container img {
+  border: 2px dotted gray;
+}
+
+.spaced {
+  margin-right: 50px;
+}
+
+.fuse-container .intro-border-piece {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#intro-kitty {
+  position: absolute;
+  bottom: 48px;
+  right: 190px;
+  height: 80px;
+  width: 115px;
 }

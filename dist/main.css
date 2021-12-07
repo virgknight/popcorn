@@ -133,10 +133,12 @@ figure.fuse-grid li, figure.fuse-grid img {
 
 #instruction-content {
   background-image: url("../../images/marquee.jpeg");
-  background-size: 800px;
-  height: 50%;
-  width: 50%;
-  left: 25%;
+  background-size: 1200px;
+  height: 70%;
+  width: 60%;
+  top: 10%;
+  left: 20%;
+  line-height: 75%;
 }
 
 .modal-header {
@@ -168,18 +170,42 @@ button:hover {
 }
 
 .instruction-text {
-  font-size: 20px;
-  margin: 3px;
+  font-size: 17px;
+  margin: 2px;
 }
 
-.modal-content .small-text {
-  font-size: 12px;
-  text-align: right;
-}
-
-.game-subtitle {
-  font-size: 18px;
+.crimson {
   color: crimson;
+}
+
+.green {
+  color: mediumseagreen;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.fuse-container img {
+  border: 2px dotted gray;
+}
+
+.spaced {
+  margin-right: 50px;
+}
+
+.fuse-container .intro-border-piece {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#intro-kitty {
+  position: absolute;
+  bottom: 48px;
+  right: 190px;
+  height: 80px;
+  width: 115px;
 }
 
 body {
@@ -280,6 +306,10 @@ li {
   font-size: 28;
 }
 
+.kernel-img {
+  padding: 1px 3px 1px 5px;
+}
+
 .blinking {
   animation: blinkingText 1s infinite;
 }
@@ -326,4 +356,46 @@ li {
   100% {
     transform: scale(0.8);
   }
+}
+.curtain {
+  z-index: 997;
+  position: absolute;
+  height: 100%;
+  width: 50%;
+}
+
+.right {
+  margin-left: 50%;
+}
+
+@keyframes lightSpeedOutLeft {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%) skewX(30deg);
+    opacity: 0;
+  }
+}
+.lightSpeedOutLeft {
+  animation-name: lightSpeedOutLeft;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes lightSpeedOutRight {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) skewX(-30deg);
+    opacity: 0;
+  }
+}
+.lightSpeedOutRight {
+  animation-name: lightSpeedOutRight;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }

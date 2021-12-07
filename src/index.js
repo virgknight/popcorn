@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const view = new View();
 
     let startGameButton = document.getElementById("start-game-button");
-    startGameButton.addEventListener("click", () => { view.startGame();});
+    startGameButton.addEventListener("click", () => { 
+        view.drawBackCurtains();
+        view.startGame();
+    });
 
     let newGameButton = document.getElementById("new-game-button");
     newGameButton.addEventListener("click", () => {view.restartGame()});

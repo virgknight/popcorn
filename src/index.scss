@@ -106,6 +106,10 @@ li {
     font-size: 28;
 }
 
+.kernel-img {
+    padding: 1px 3px 1px 5px;
+}
+
 // blinking text for timer when <5 seconds remain
 .blinking{
     animation:blinkingText 1s infinite;
@@ -130,3 +134,51 @@ li {
     60%{transform: scale(1.0)}
     100%{transform: scale(0.8)}
 }
+
+// curtains drawn before game starts
+.curtain {
+    z-index: 997;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+}
+
+.right {
+    margin-left: 50%;
+}
+
+@keyframes lightSpeedOutLeft {
+   0% { 
+      opacity: 1; 
+   }
+   100% { 
+      transform: translateX(-100%) skewX(30deg); 
+      opacity: 0; 
+   } 
+} 
+
+.lightSpeedOutLeft {
+  animation-name: lightSpeedOutLeft;
+  animation-timing-function: ease-in;
+
+  animation-duration: 1s;
+  animation-fill-mode: both;
+} 
+
+@keyframes lightSpeedOutRight {
+   0% { 
+      opacity: 1; 
+   }
+   100% { 
+      transform: translateX(100%) skewX(-30deg); 
+      opacity: 0; 
+   } 
+} 
+
+.lightSpeedOutRight {
+  animation-name: lightSpeedOutRight;
+  animation-timing-function: ease-in;
+
+  animation-duration: 1s;
+  animation-fill-mode: both;
+} 
