@@ -13,6 +13,19 @@
 </head>
 
 <body>
+    <!-- Introduction/instructions modal -->
+    <div class="modal">
+        <div id="instruction-content" class="modal-content">
+            <p class="game-title">Popcorn Popper</p>
+            <p class="game-subtitle">Can you become a popcorn sensation?</p>
+            <br>
+            <p class="instruction-text">Click on a fuse to rotate it clockwise.</p>
+            <p class="instruction-text">Turn the fuses to link a flame with one or more kernels to pop them!</p>
+            <p class="instruction-text">But hurry- you must pop enough for this popcorn-loving kitty before the movie starts or the show will not go on...</p>
+            <br>
+            <button id="start-game-button">Let's get popping!</button>
+        </div>
+    </div>
 
     <!-- Modal shown when game is lost -->
     <div id="lose-modal" class="hidden modal">
@@ -41,7 +54,7 @@
     <!-- Actual game components -->
     <div class="game-space">
 
-    <h1>Popcorn Popper</h1>
+    <h1 class="game-title">Popcorn Popper</h1>
 
     <div id="game-components">
         <!-- Sidebar containing level, score, kernel count, timer, quit option -->
@@ -56,7 +69,7 @@
             </section>
             <br>
             <section class="kernels-box">
-                <h3>Kernels Remaining</h3>
+                <h3>Kernels to Level Up</h3>
                 <div id="kernels-remaining" class="sidebar-stats"></div>
             </section>
             <br>

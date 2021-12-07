@@ -59,7 +59,7 @@ figure.fuse-grid {
   width: 330px;
   padding-top: 3px;
   padding-bottom: 3px;
-  background-color: whitesmoke;
+  background-color: cornsilk;
   border: dotted 2px darkgray;
   border-radius: 4px;
 }
@@ -128,6 +128,15 @@ figure.fuse-grid li, figure.fuse-grid img {
   justify-content: center;
   align-items: center;
   padding: 30px;
+  text-shadow: 0 0 4px white;
+}
+
+#instruction-content {
+  background-image: url("../../images/marquee.jpeg");
+  background-size: 800px;
+  height: 50%;
+  width: 50%;
+  left: 25%;
 }
 
 .modal-header {
@@ -158,6 +167,21 @@ button:hover {
   border-color: white;
 }
 
+.instruction-text {
+  font-size: 20px;
+  margin: 3px;
+}
+
+.modal-content .small-text {
+  font-size: 12px;
+  text-align: right;
+}
+
+.game-subtitle {
+  font-size: 18px;
+  color: crimson;
+}
+
 body {
   background-image: url("../images/background.jpeg");
   font-family: "Nova Flat";
@@ -169,15 +193,19 @@ body {
 }
 
 h1 {
-  font-size: 52;
-  font-weight: bolder;
   padding: 10px;
   margin: 20px;
   text-align: center;
-  color: black;
   background-image: url("../images/marquee.jpeg");
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.game-title {
+  font-size: 52;
+  font-weight: bolder;
+  color: black;
+  padding: 10px;
 }
 
 img {
@@ -194,7 +222,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to right, silver, gainsboro);
+  background-color: #570000;
   border-radius: 5px;
   padding: 10px 5px 10px 5px;
 }
@@ -246,7 +274,7 @@ li {
 }
 
 .sidebar-stats {
-  background-color: whitesmoke;
+  background-color: ivory;
   margin: 5px;
   border: 1px solid darkgray;
   font-size: 28;

@@ -17,15 +17,19 @@ body {
 }
 
 h1 {
-    font-size: 52;
-    font-weight: bolder;
     padding: 10px;
     margin: 20px;
     text-align: center;
-    color: black;
     background-image: url("../images/marquee.jpeg");
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.game-title {
+    font-size: 52;
+    font-weight: bolder;
+    color: black;
+    padding: 10px;
 }
 
 img {
@@ -42,8 +46,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    // background-color: gainsboro;
-    background-image: linear-gradient(to right, silver, gainsboro);
+    background-color: #570000;
+    // background-image: linear-gradient(to right, #2e0000, #570000);
     border-radius: 5px;
     padding: 10px 5px 10px 5px;
 }
@@ -96,7 +100,7 @@ li {
 }
 
 .sidebar-stats {
-    background-color: whitesmoke;
+    background-color: ivory;
     margin: 5px;
     border: 1px solid darkgray;
     font-size: 28;

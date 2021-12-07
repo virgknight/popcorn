@@ -31,6 +31,15 @@
   justify-content: center;
   align-items: center;
   padding: 30px;
+  text-shadow: 0 0 4px white;
+}
+
+#instruction-content {
+  background-image: url("../../images/marquee.jpeg");
+  background-size: 800px;
+  height: 50%;
+  width: 50%;
+  left: 25%;
 }
 
 .modal-header {
@@ -59,4 +68,19 @@ button:hover {
   animation: none;
   font-weight: bold;
   border-color: white;
+}
+
+.instruction-text {
+  font-size: 20px;
+  margin: 3px;
+}
+
+.modal-content .small-text {
+  font-size: 12px;
+  text-align: right;
+}
+
+.game-subtitle {
+  font-size: 18px;
+  color: crimson;
 }

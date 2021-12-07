@@ -9,20 +9,18 @@ class View {
     constructor() {
         this.setUpBorderItems();
         this.game = new Game();
-        this.startGame();
     }
 
     startGame() {
         this.refreshSidebar();
         this.setUpViewableGrid();
         this.bindEvents();
+        this.hideModals();
         this.game.start();
         this.checkForDetonation();
     }
 
     startNewLevel() {
-        // hide modal box(es)
-        this.hideModals();
         // clear out old level
         document.querySelectorAll("li.fuse").forEach((li) => {
             li.remove();
@@ -34,7 +32,6 @@ class View {
     }
 
     restartGame() {
-        this.hideModals();
         // clear out old game
         document.querySelectorAll("li.fuse").forEach((li) => {
             li.remove();
