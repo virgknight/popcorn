@@ -1,7 +1,7 @@
 import Grid from "./grid.js";
 import Timer from "./timer.js";
 
-const LEVEL_UP_MESSAGES = ["Well done!", "Nice going!", "America's Next Pop Model!", "You're a pop star!", "Way to go!", "Pop-notch work!", "You're on top of the pop!", "Pop off sis!"]
+const LEVEL_UP_MESSAGES = ["Well done!", "Nice going!", "America's Next Pop Model!", "You're a pop star!", "Way to go!", "Pop-notch work!", "You're on top of the pop!", "Pop off!"]
 
 class Game {
     constructor() {
@@ -73,21 +73,29 @@ class Game {
                 }
             }
         }
-        const numKernelsPopped = this.getKernelsPopped(burntFuses);
-        this.incrementScore(numKernelsPopped);
-        this.decrementKernelsRemaining(numKernelsPopped);
+        const poppedKernels = this.getKernelsPopped(burntFuses);
+        this.incrementScore(poppedKernels[0]);
+        this.decrementKernelsRemaining(poppedKernels[0]);
         this.gridObj.detonate(burntFuses);
-        return burntFuses;
+        return [burntFuses, poppedKernels[1]];
+        // passes burntFuses to view so that burnt pieces are shown with the explosion animation
+        // passes poppedKernels[1] (aka array of vertical indices where kernels popped) to view so it can show popcorn popping from those indices
     }
 
     getKernelsPopped(burntFuses) {
         let numKernelsPopped = 0;
         const that = this;
+        const poppedIndices = []
         burntFuses.filter((pos) => pos[0] === 5)
             .forEach((pos) => {
-                if (that.getFuse(pos).right() === 1) numKernelsPopped++;
+                if (that.getFuse(pos).right() === 1) {
+                    numKernelsPopped++;
+                    poppedIndices.push(pos[1]);
+                }
             });
-        return numKernelsPopped;
+        return [numKernelsPopped, poppedIndices];
+        // passes numKernelsPopped to this.detonate so that score, kernel count can be updated
+        // passes poppedIndices to this.detonate so that this.detonate can pass it to the view
     }
 
     decrementKernelsRemaining(numKernelsPopped) {
@@ -97,7 +105,6 @@ class Game {
             setTimeout(this.levelUpMessage.bind(this), 700); //set to 700 rather than 0 so that explosion graphic plays
         }
     }
-
 
     incrementScore (numKernelsPopped) {
         this.score += numKernelsPopped * 100 + Math.floor(numKernelsPopped/1.5) * 75;

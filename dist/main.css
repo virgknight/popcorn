@@ -202,10 +202,10 @@ button:hover {
 
 #intro-kitty {
   position: absolute;
-  bottom: 48px;
-  right: 190px;
+  bottom: 55px;
+  right: 250px;
   height: 80px;
-  width: 115px;
+  width: 105px;
 }
 
 body {
@@ -266,7 +266,7 @@ li {
 
 #kitten, #bowl {
   position: absolute;
-  right: 140px;
+  right: 160px;
 }
 
 #kitten {
@@ -398,4 +398,10 @@ li {
   animation-timing-function: ease-in;
   animation-duration: 1s;
   animation-fill-mode: both;
+}
+
+canvas {
+  z-index: 1;
+  position: absolute;
+  right: 11%;
 }

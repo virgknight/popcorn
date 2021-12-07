@@ -1,4 +1,5 @@
 import Game from "./game.js";
+import Popcorn from "./popcorn";
 
 const BORDERITEMS = {
     "flame": "../images/flame.png",
@@ -9,6 +10,17 @@ class View {
     constructor() {
         this.setUpBorderItems();
         this.game = new Game();
+        // for popped popcorn graphic
+        this.kernelInterval = undefined;
+        this.ctx = document.getElementById("popcorn-canvas").getContext("2d");
+    }
+
+    drawBackCurtains() {
+        const curtainL = document.querySelector(".curtain.left");
+        curtainL.classList.add("lightSpeedOutLeft");
+        const curtainR = document.querySelector(".curtain.right");
+        curtainR.classList.add("lightSpeedOutRight");
+        setTimeout(this.removeCurtains.bind(this), 1000);
     }
 
     startGame() {
@@ -18,14 +30,6 @@ class View {
         this.hideModals();
         this.game.start();
         this.checkForDetonation();
-    }
-
-    drawBackCurtains() {
-        const curtainL = document.querySelector(".curtain.left");
-        curtainL.classList.add("lightSpeedOutLeft");
-        const curtainR = document.querySelector(".curtain.right");
-        curtainR.classList.add("lightSpeedOutRight");
-        setTimeout(this.removeCurtains.bind(this), 1000);
     }
 
     removeCurtains() {
@@ -122,7 +126,7 @@ class View {
             flameList.appendChild(flameLi);
 
             let kernelLi = document.createElement("li");
-            kernelLi.classList.add(`${i}`, "kernel-img");
+            kernelLi.classList.add("kernel-img");
             let kernelImg = document.createElement("img");
             kernelImg.src = BORDERITEMS["kernel"];
             kernelLi.appendChild(kernelImg);
@@ -157,13 +161,19 @@ class View {
     detonateSequence() {
         const that = this;
         if (this.game.canDetonate()) {
-            const burntFuses = this.game.detonate();
+            const detonationAttributes = this.game.detonate();
+            // play explosion graphic for burnt pieces in grid
+            const burntFuses = detonationAttributes[0];
             burntFuses.forEach((pos) => {
                 let fuseId = `${pos[0]}${pos[1]}`;
                 let img = document.getElementById(`${fuseId}`).children[0];
                 img.src = `../images/fuse_pieces/burnt.png`;
                 img.classList.add("exploding");
             });
+            // initiate popped popcorn animation in canvas element
+            const poppedIndices = detonationAttributes[1];
+            this.kernelPopInterval(poppedIndices);
+            // refresh/update game board after the explosion graphics play
             setTimeout(that.updateAfterDetonate.bind(that), 700);
         }
     }
@@ -191,6 +201,27 @@ class View {
             else if (occupant.connectF) { color = "red"; }
             img.src = `../images/fuse_pieces/${color}/${occupantConfig}.png`;
         })
+    }
+
+    kernelPopInterval(poppedIndices) {
+        // create array of new popcorn objects for each popped index
+        let popcornArr = poppedIndices.map((idx) => new Popcorn(this.ctx, 55 * (8 - idx)));
+        // pass to kernelPop function
+        this.kernelInterval = setInterval(this.kernelPop.bind(this, popcornArr), 50);
+    }
+
+    kernelPop(popcornArr) {
+        // clear prior to each rerender
+        this.ctx.clearRect(0, 0, 240, 530);
+        // render each piece
+        popcornArr.forEach((popcorn) => {
+            popcorn.draw();
+        });
+        // stop interval and clear display once all popcorns have made it into the bowl
+        if (popcornArr.every((popcorn) => (popcorn.inBowl))) {
+            clearInterval(this.kernelInterval);
+            this.ctx.clearRect(0, 0, 240, 530);
+        }
     }
 
 }
