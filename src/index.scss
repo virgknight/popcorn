@@ -43,8 +43,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #570000;
-    // background-image: linear-gradient(to right, #2e0000, #570000);
+    // background-color: #570000;
+    background-color: #7c0000;
     border-radius: 5px;
     padding: 10px 5px 10px 5px;
 }
@@ -102,6 +102,7 @@ li {
     position: absolute;
     height: 100%;
     width: 50%;
+    top: 0px;
 }
 
 .right {
@@ -150,4 +151,11 @@ canvas {
     z-index: 1;
     position: absolute;
     right: 11%;
+}
+
+.bottom-border {
+    background-color: black;
+    height: 200px;
+    width: 100%;
+    bottom: -40px;
 }

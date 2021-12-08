@@ -74,27 +74,27 @@ class Game {
             }
         }
         const poppedKernels = this.getKernelsPopped(burntFuses);
-        this.incrementScore(poppedKernels[0]);
-        this.decrementKernelsRemaining(poppedKernels[0]);
+        this.incrementScore(poppedKernels.length);
+        this.decrementKernelsRemaining(poppedKernels.length);
         this.gridObj.detonate(burntFuses);
-        return [burntFuses, poppedKernels[1]];
+        return [burntFuses, poppedKernels];
         // passes burntFuses to view so that burnt pieces are shown with the explosion animation
-        // passes poppedKernels[1] (aka array of vertical indices where kernels popped) to view so it can show popcorn popping from those indices
+        // passes poppedKernels (array of vertical indices where kernels popped) to view so it can show popcorn popping from those indices
     }
 
     getKernelsPopped(burntFuses) {
-        let numKernelsPopped = 0;
         const that = this;
         const poppedIndices = []
         burntFuses.filter((pos) => pos[0] === 5)
             .forEach((pos) => {
-                if (that.getFuse(pos).right() === 1) {
-                    numKernelsPopped++;
-                    poppedIndices.push(pos[1]);
-                }
+                if (that.getFuse(pos).right() === 1) poppedIndices.push(pos[1]);
             });
-        return [numKernelsPopped, poppedIndices];
-        // passes numKernelsPopped to this.detonate so that score, kernel count can be updated
+
+        if (poppedIndices.length >= 5) {
+            document.getElementById("kitten").src = "./images/kittens/happy-dance.png";
+        }
+
+        return poppedIndices;
         // passes poppedIndices to this.detonate so that this.detonate can pass it to the view
     }
 

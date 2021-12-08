@@ -182,6 +182,7 @@ class View {
         this.game.updateAfterDetonate();
         this.refreshViewableGrid();
         this.refreshSidebar();
+        document.getElementById("kitten").src = "./images/kittens/waiting.png";
         document.getElementById("bowl").src = "./images/filled-bowl.png";
         this.checkForDetonation();
     }
@@ -211,7 +212,7 @@ class View {
     }
 
     kernelPop(popcornArr) {
-        // clear prior to each rerender
+        // clear canvas prior to each rerender
         this.ctx.clearRect(0, 0, 240, 530);
         // render each piece
         popcornArr.forEach((popcorn) => {

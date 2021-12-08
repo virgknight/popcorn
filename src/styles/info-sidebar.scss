@@ -2,13 +2,15 @@
 .game-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
     width: 25%;
 }
 
 .sidebar {
-    background-color: cornsilk;
+    // background-color: cornsilk;
+    background-image: url("../images/marquee.jpeg");
+    background-position: center;
+    background-size: 850px;
     border-radius: 5px;
     text-align: center;
     height: 57%;
@@ -32,29 +34,32 @@
 }
 
 .links {
-    background-color: #570000;
+    // background-color: crimson;
+    background-color: cornsilk;
     border-radius: 5px;
     text-align: center;
     height: 6%;
-    width: 50%;
+    width: 40%;
     padding: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    margin-top: 30px;
 }
 
 .icon {
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
-#github {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
-}
+// #github {
+//     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
+// }
 
 #linkedin {
     width: 33px;
-    filter: brightness(0%) invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
+    filter: brightness(0%);
 }
 
 // blinking text for timer when <5 seconds remain
