@@ -1,12 +1,9 @@
 @import './styles/reset.scss';
-@import './styles/game_grid.scss';
+@import './styles/fuse-grid.scss';
 @import './styles/modals.scss';
-
+@import './styles/info-sidebar.scss';
 
 body {
-    // background-color: #f5f5f5;
-    // background-image: linear-gradient(to right, #f7d2d5, #f7d2d5 10px, #f5f5f5 10px, #f5f5f5 );
-    // background-size: 20px 100%;
     background-image: url("../images/background.jpeg");
     font-family: 'Nova Flat';
 }
@@ -81,47 +78,11 @@ li {
     top: -25px;
 }
 
-.sidebar {
-    background-color: cornsilk;
-    border-radius: 5px;
-    text-align: center;
-    height: 50%;
-    width: 20%;
-    padding: 10px;
-}
-
-.sidebar h3 {
-    margin: 3px;
-    font-family: 'Nova Flat';
-}
-
-#current-level {
-    font-size: 22px;
-}
-
-.sidebar-stats {
-    background-color: ivory;
-    margin: 5px;
-    border: 1px solid darkgray;
-    font-size: 28;
-}
 
 .kernel-img {
     padding: 1px 3px 1px 5px;
 }
 
-// blinking text for timer when <5 seconds remain
-.blinking{
-    animation:blinkingText 1s infinite;
-}
-
-@keyframes blinkingText{
-    0%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
-    49%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
-    60%{ font-weight: bold; color: #000; text-shadow: none;}
-    99%{ font-weight: bold; color:#000; text-shadow: none;}
-    100%{ font-weight: normal; color: red; text-shadow: 0 0 2px lightcoral;}
-}
 
 // pulsating flames
 .pulsing {
@@ -153,7 +114,7 @@ li {
    }
    100% { 
       transform: translateX(-100%) skewX(30deg); 
-      opacity: 0; 
+      opacity: 0.5; 
    } 
 } 
 
@@ -189,5 +150,4 @@ canvas {
     z-index: 1;
     position: absolute;
     right: 11%;
-    // border: 3px solid yellow;
 }

@@ -208,6 +208,95 @@ button:hover {
   width: 105px;
 }
 
+.game-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+}
+
+.sidebar {
+  background-color: cornsilk;
+  border-radius: 5px;
+  text-align: center;
+  height: 57%;
+  padding: 10px;
+}
+
+.sidebar h3 {
+  margin: 3px;
+  font-family: "Nova Flat";
+}
+
+#current-level {
+  font-size: 22px;
+}
+
+.sidebar-stats {
+  background-color: ivory;
+  margin: 5px;
+  border: 1px solid darkgray;
+  font-size: 28;
+}
+
+.links {
+  background-color: #570000;
+  border-radius: 5px;
+  text-align: center;
+  height: 6%;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+}
+
+#github {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
+}
+
+#linkedin {
+  width: 33px;
+  filter: brightness(0%) invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
+}
+
+.blinking {
+  animation: blinkingText 1s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    font-weight: normal;
+    color: red;
+    text-shadow: 0 0 2px lightcoral;
+  }
+  49% {
+    font-weight: normal;
+    color: red;
+    text-shadow: 0 0 2px lightcoral;
+  }
+  60% {
+    font-weight: bold;
+    color: #000;
+    text-shadow: none;
+  }
+  99% {
+    font-weight: bold;
+    color: #000;
+    text-shadow: none;
+  }
+  100% {
+    font-weight: normal;
+    color: red;
+    text-shadow: 0 0 2px lightcoral;
+  }
+}
 body {
   background-image: url("../images/background.jpeg");
   font-family: "Nova Flat";
@@ -281,66 +370,10 @@ li {
   top: -25px;
 }
 
-.sidebar {
-  background-color: cornsilk;
-  border-radius: 5px;
-  text-align: center;
-  height: 50%;
-  width: 20%;
-  padding: 10px;
-}
-
-.sidebar h3 {
-  margin: 3px;
-  font-family: "Nova Flat";
-}
-
-#current-level {
-  font-size: 22px;
-}
-
-.sidebar-stats {
-  background-color: ivory;
-  margin: 5px;
-  border: 1px solid darkgray;
-  font-size: 28;
-}
-
 .kernel-img {
   padding: 1px 3px 1px 5px;
 }
 
-.blinking {
-  animation: blinkingText 1s infinite;
-}
-
-@keyframes blinkingText {
-  0% {
-    font-weight: normal;
-    color: red;
-    text-shadow: 0 0 2px lightcoral;
-  }
-  49% {
-    font-weight: normal;
-    color: red;
-    text-shadow: 0 0 2px lightcoral;
-  }
-  60% {
-    font-weight: bold;
-    color: #000;
-    text-shadow: none;
-  }
-  99% {
-    font-weight: bold;
-    color: #000;
-    text-shadow: none;
-  }
-  100% {
-    font-weight: normal;
-    color: red;
-    text-shadow: 0 0 2px lightcoral;
-  }
-}
 .pulsing {
   transform: scale(1);
   animation: pulse 1s infinite;
@@ -374,7 +407,7 @@ li {
   }
   100% {
     transform: translateX(-100%) skewX(30deg);
-    opacity: 0;
+    opacity: 0.5;
   }
 }
 .lightSpeedOutLeft {
