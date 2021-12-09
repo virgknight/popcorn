@@ -1,5 +1,5 @@
 # Popcorn Popper
-Popcorn Popper is a movie-theater themed, single-player game in which a player earns points and ascends levels by popping popcorn for a hungry kitty. It is inspired by a favorite childhood flash game of mine, Popcap Games' Rocket Mania. 
+Popcorn Popper is a movie-theater themed, single-player game in which a player earns points and ascends levels by popping popcorn for a hungry kitty. It is inspired by a favorite childhood flash game of mine, Popcap Games' Rocket Mania. <br>
 <img src="/images/kittens/intro.png" alt = "i can has popcorn?" width="280" height="210">
 
 ## Description
