@@ -1,6 +1,6 @@
 # Popcorn Popper
 Popcorn Popper is a movie-theater themed, single-player game in which a player earns points and ascends levels by popping popcorn for a hungry kitty. It is inspired by a favorite childhood flash game of mine, Popcap Games' Rocket Mania. 
-![i can has popcorn?](/images/kittens/intro.png)
+![i can has popcorn?](/images/kittens/intro.png | width=100)
 
 ## Description
 The game plays out on a rectangular grid which is bordered by flames on the right-hand side and popcorn kernels on the left-hand side. Each cell of the grid contains a section of rope fuse which can be rotated on a click. In order to pop a kernel, the player must rotate fuse segments to form a continuous path from the fire to the kernel, allowing a flame to travel along the fuse. Once the kernel pops, all fuse pieces along the path burn up and disappear; these pieces will be replaced by randomly generated new fuse pieces. Some fuse pieces point in 3 or 4 directions at once, effectively splitting the flame and allowing the player to pop multiple kernels at once!
@@ -22,7 +22,13 @@ In addition, this project will include:
 * An introductory modal with how-to-play instructions
 
 ## Features
+#### Landing screen with introductory modal
+![introductory modal](/images/readme/)
 
+#### Demo gameplay
+![](images/readme/gameplay.gif)
+
+#### Fuse connection logic
 
 ## Technologies
 This project was implemented with the following technologies:
