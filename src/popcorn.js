@@ -1,5 +1,5 @@
 const PIECE = new Image();
-PIECE.src = "../images/popcorn.png";
+PIECE.src = "./images/popcorn.png";
 
 class Popcorn {
     constructor (ctx, yIdx) {

@@ -2,8 +2,8 @@ import Game from "./game.js";
 import Popcorn from "./popcorn";
 
 const BORDERITEMS = {
-    "flame": "../images/flame.png",
-    "kernel": "../images/kernel.png"
+    "flame": "./images/flame.png",
+    "kernel": "./images/kernel.png"
 };
 
 class View {
@@ -94,7 +94,7 @@ class View {
                 if (occupant.connectF && occupant.connectK) {color = "yellow";}
                 else if (occupant.connectK) {color = "green";}
                 else if (occupant.connectF) {color = "red";}
-                img.src = `../images/fuse_pieces/${color}/${occupantConfig}.png`;
+                img.src = `./images/fuse_pieces/${color}/${occupantConfig}.png`;
 
                 let li = document.createElement("li");
                 li.id = `${j}${i}`;
@@ -160,7 +160,7 @@ class View {
             burntFuses.forEach((pos) => {
                 let fuseId = `${pos[0]}${pos[1]}`;
                 let img = document.getElementById(`${fuseId}`).children[0];
-                img.src = `../images/fuse_pieces/burnt.png`;
+                img.src = `./images/fuse_pieces/burnt.png`;
                 img.classList.add("exploding");
             });
             // initiate popped popcorn animation in canvas element
@@ -193,7 +193,7 @@ class View {
             if (occupant.connectF && occupant.connectK) { color = "yellow"; }
             else if (occupant.connectK) { color = "green"; }
             else if (occupant.connectF) { color = "red"; }
-            img.src = `../images/fuse_pieces/${color}/${occupantConfig}.png`;
+            img.src = `./images/fuse_pieces/${color}/${occupantConfig}.png`;
         })
     }
 
