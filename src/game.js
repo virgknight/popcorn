@@ -7,7 +7,7 @@ class Game {
     constructor() {
         this.gridObj = new Grid ();
         this.score = 0;
-        this.baseKernelsRemaining = 3; // change to 7 or 8 after development
+        this.baseKernelsRemaining = 7;
         this.kernelsRemaining = this.baseKernelsRemaining;
         
         this.level = 1;
@@ -21,11 +21,6 @@ class Game {
     }
 
     outOfTime () {
-        this.gameOverMessage();
-        return;
-    }
-
-    gameOverMessage() {
         document.getElementById("kitten").src = "./images/kittens/sad.png";
         document.getElementById("final-score").innerHTML = `Final score: ${this.score} points`;
         document.getElementById("lose-modal").classList.remove("hidden");
@@ -39,7 +34,7 @@ class Game {
     }
 
     makeNewLevel() {
-        // update level and level display
+        // update level within Game class and within sidebar
         this.level++;
         document.getElementById("current-level").innerHTML = `Level ${this.level}`;
         // make new game grid
@@ -95,7 +90,7 @@ class Game {
         }
 
         return poppedIndices;
-        // passes poppedIndices to this.detonate so that this.detonate can pass it to the view
+        // passes poppedIndices to this.detonate which in turn passes it to the view
     }
 
     decrementKernelsRemaining(numKernelsPopped) {
@@ -107,7 +102,10 @@ class Game {
     }
 
     incrementScore (numKernelsPopped) {
-        this.score += numKernelsPopped * 100 + Math.floor(numKernelsPopped/1.5) * 75;
+        this.score += numKernelsPopped * 100 + 
+                Math.floor(numKernelsPopped/1.5) * 75 + 
+                Math.floor(numKernelsPopped/4) * 75 + 
+                Math.floor(numKernelsPopped/9) * 500;
     }
 
     updateAfterDetonate () {

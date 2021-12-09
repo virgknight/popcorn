@@ -7,7 +7,6 @@
 }
 
 .sidebar {
-    // background-color: cornsilk;
     background-image: url("../images/marquee.jpeg");
     background-position: center;
     background-size: 850px;
@@ -53,12 +52,8 @@
     cursor: pointer;
 }
 
-// #github {
-//     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(137deg) brightness(108%) contrast(102%);
-// }
-
 #linkedin {
-    width: 33px;
+    width: 35px;
     filter: brightness(0%);
 }
 

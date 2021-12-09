@@ -8,9 +8,11 @@ const BORDERITEMS = {
 
 class View {
     constructor() {
+        // add flames and kernels bordering the game grid
         this.setUpBorderItems();
+        // initiate new game
         this.game = new Game();
-        // for popped popcorn graphic
+        // variables for canvas popped popcorn graphic
         this.kernelInterval = undefined;
         this.ctx = document.getElementById("popcorn-canvas").getContext("2d");
     }
@@ -23,6 +25,11 @@ class View {
         setTimeout(this.removeCurtains.bind(this), 1000);
     }
 
+    removeCurtains() {
+        const curtains = document.querySelectorAll(".curtain");
+        curtains.forEach((curtain) => { curtain.classList.add("hidden") });
+    }
+
     startGame() {
         this.refreshSidebar();
         this.setUpViewableGrid();
@@ -30,11 +37,6 @@ class View {
         this.hideModals();
         this.game.start();
         this.checkForDetonation();
-    }
-
-    removeCurtains() {
-        const curtains = document.querySelectorAll(".curtain");
-        curtains.forEach((curtain) => {curtain.classList.add("hidden")});
     }
 
     startNewLevel() {
@@ -60,7 +62,7 @@ class View {
 
     stopGame () {
         this.game.timer.stop();
-        this.game.outOfTime();
+        this.game.outOfTime();//
     }
 
     hideModals() {
@@ -87,7 +89,7 @@ class View {
                 let occupantConfig = occupant.fusePos.join('');
 
                 let img = document.createElement("img");
-                // determine color of piece
+                // image source depends on what color the piece should be
                 let color = "default";
                 if (occupant.connectF && occupant.connectK) {color = "yellow";}
                 else if (occupant.connectK) {color = "green";}
@@ -97,13 +99,6 @@ class View {
                 let li = document.createElement("li");
                 li.id = `${j}${i}`;
                 li.classList.add("fuse");
-
-                if (occupant.connectK) {
-                    li.classList.add("kernel-connected");
-                };
-                if (occupant.connectF) {
-                    li.classList.add("flame-connected");
-                };
 
                 li.appendChild(img);
                 ul.appendChild(li);
@@ -142,9 +137,8 @@ class View {
     }
 
     checkForDetonation() {
-        const that = this;
         if (this.game.canDetonate()) {
-            setTimeout(that.detonateSequence.bind(that), 1000);
+            setTimeout(this.detonateSequence.bind(this), 1000);
         }
     }
 
@@ -159,7 +153,6 @@ class View {
     }
 
     detonateSequence() {
-        const that = this;
         if (this.game.canDetonate()) {
             const detonationAttributes = this.game.detonate();
             // play explosion graphic for burnt pieces in grid
@@ -174,7 +167,7 @@ class View {
             const poppedIndices = detonationAttributes[1];
             this.kernelPopInterval(poppedIndices);
             // refresh/update game board after the explosion graphics play
-            setTimeout(that.updateAfterDetonate.bind(that), 700);
+            setTimeout(this.updateAfterDetonate.bind(this), 700);
         }
     }
 

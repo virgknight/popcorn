@@ -31,6 +31,7 @@ class Grid {
     }
 
     refreshFuseConnections() { 
+        // clear out prior connections
         this.resetFuseConnections();
         // Flame connection
         this.checkFuseConnections(0, connectedToFlame, "flame");
@@ -49,12 +50,12 @@ class Grid {
 
     checkFuseConnections (startIdx, callback, subject) {
         // Use BFS node traversal to generate flame/kernel connections
-        // Generate queue; add first column twice in case fuse in same row connects it
+        // To begin, populate queue with the pieces that immediately border the flames/kernels
         let queue = [];
         for (let i=0; i<9; i++) {
             queue.push([startIdx, i]);
         }
-        // to be populated with key: indices checked, value: number of times they've been checked
+        // checked will be populated with key: indices checked, value: number of times they've been checked
         let checked = {};
 
         while (queue.length > 0) {
@@ -73,11 +74,11 @@ class Grid {
                 neighbors.forEach((neighbor) => {
                     // must convert to string to allow JS to check for equality
                     let neighborStr = JSON.stringify(neighbor);
-                    // if that neighbor hasn't been checked yet
+                    // if that neighbor hasn't been checked yet...
                     if (!(neighborStr in checked) || 
-                        // or if they are an edge piece but have not been checked from all three sides
+                        // or if they are an edge piece but have not been checked from all three sides...
                         (checked[neighborStr] < 3) ||
-                        // or if they are not an edge piece but have not been checked from all four sides
+                        // or if they are not an edge piece but have not been checked from all four sides...
                         (checked[neighborStr] < 4 && ![0, 5].includes(neighbor[0]))
                     ) {
                         // then add to queue to be checked (or checked again)
