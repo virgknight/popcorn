@@ -1,48 +1,38 @@
 # Popcorn Popper
+Popcorn Popper is a movie-theater themed, single-player game in which a player earns points and ascends levels by popping popcorn for a hungry kitty. It is inspired by a favorite childhood flash game of mine, Popcap Games' Rocket Mania. 
+![i can has popcorn?](/images/kittens/intro.png)
 
-## Background
-Popcorn Popper is a single-player game in which a player earns points and ascends levels by popping popcorn kernels. The game plays out on a rectangular grid which is bordered by flames on the right-hand side and popcorn kernels on the left-hand side. Each cell of the grid contains a section of rope fuse which can be rotated on a click. In order to pop a kernel, the player must rotate fuse segments to form a continuous path from the fire to the kernel, allowing a flame to travel along the fuse. Once the kernel pops, all fuse pieces along the path burn up and disappear; these pieces will be replaced by randomly generated new fuse pieces. Some fuse pieces point in 3 or 4 directions at once, effectively splitting the flame and allowing the player to pop multiple kernels at once!
+## Description
+The game plays out on a rectangular grid which is bordered by flames on the right-hand side and popcorn kernels on the left-hand side. Each cell of the grid contains a section of rope fuse which can be rotated on a click. In order to pop a kernel, the player must rotate fuse segments to form a continuous path from the fire to the kernel, allowing a flame to travel along the fuse. Once the kernel pops, all fuse pieces along the path burn up and disappear; these pieces will be replaced by randomly generated new fuse pieces. Some fuse pieces point in 3 or 4 directions at once, effectively splitting the flame and allowing the player to pop multiple kernels at once!
+
+Check out the live demo [here](https://virgknight.github.io/popcorn/)!
 
 ## Functionality & MVPs
-In Popcorn Popper, the user will be able to:
+In Popcorn Popper, a player can:
 * Start and stop a new game
-* Play through different levels of increasing difficulty
 * Rotate fuse pieces on a click
+* Easily distinguish which fuses are already connected to a flame or a kernel with color-coding
 * Construct fuse paths that ignite one or more popcorn kernels
 * If a continuous fuse path is accidentally created, click out of it within a second-long grace period
+* Earn extra points by popping multiple kernels concurrently
+* Play through different levels of increasing difficulty
 
 In addition, this project will include:
 * A production README
-* A "How to Play" modal with game instructions
+* An introductory modal with how-to-play instructions
 
-## Wireframes
-![wireframe](/images/Homepage.png)
-The navigation bar will include links to this project's GitHub repo, my LinkedIn, and the "How to Play" modal.
+## Features
 
-## Technologies, Libraries, APIs
-This project will be implemented with the following technologies:
+
+## Technologies
+This project was implemented with the following technologies:
 * JavaScript to handle game logic
-* Canvas to render the game grid
+* HTML5/CSS3 to render the game grid, sidebar, and modals
+* Canvas to render a fun popcorn-popping graphic
 * Webpack to bundle and transpile the source JavaScript code
 * npm to handle project dependencies
 
-## Implementation Timeline
-### Friday Afternoon & Weekend
-* Study similar games to get a feel for the setup and logic
-* Set up the environment, including WebPack
-* Write classes and controllers for grid pieces
-* Hopefully get the Canvas display up and running
-
-### Monday
-* Write logic for user interaction: rotating fuse elements, getting directions, etc.
-* Write logic for scoring, game timer, and level completion 
-
-### Tuesday
-* Complete any remaining logic in run.js file; by the end of the day the game should (hopefully) be fully functional, just lacking styling
-
-### Wednesday
-* Focus on styling and graphic touches, including but not limited to color-coding fuse pieces, animating popped popcorn pieces, using CSS to make nav and other HTML elements "pretty"
-
-### Thursday Morning
-* Complete any last-minute polishing and bug fixing
-* Push to GitHub and Heroku!
+## Future Considerations
+* Global leaderboard for high scores
+* Scoring multipliers after a score threshhold has been reached- eg. after the player earns X points, a single kernel pile will generate two pieces of popcorn when ignited rather than one
+* Improved celebrating cat graphics
