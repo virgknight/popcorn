@@ -17,4 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let quitButton = document.getElementById("quit-button");
     quitButton.addEventListener("click", () => { view.stopGame() });
+
+    const instructionsButton = document.getElementById("instructions-button");
+    instructionsButton.addEventListener("click", () => { view.reopenInstructions() })
+
+    const resumeGameButton = document.getElementById("resume-game-button");
+    resumeGameButton.addEventListener("click", () => { view.unPauseGame() });
 });

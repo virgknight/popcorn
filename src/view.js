@@ -30,7 +30,29 @@ class View {
         curtains.forEach((curtain) => { curtain.classList.add("hidden") });
     }
 
+    toggleIntroModal () {
+        const introModal = document.getElementById("instruction-modal");
+        introModal.classList.toggle("hidden");
+    }
+
+    reopenInstructions () {
+        // remove Start Game button if not already done
+        const startGameButton = document.getElementById("start-game-button");
+        if (startGameButton) startGameButton.remove();
+        // reveal Resume Game button if not already done
+        const resumeGameButton = document.getElementById("resume-game-button");
+        if (resumeGameButton.classList.contains("hidden")) resumeGameButton.classList.remove("hidden");
+        this.toggleIntroModal();
+        this.game.pause();
+    }
+
+    unPauseGame () {
+        this.game.restart();
+        this.toggleIntroModal();
+    }
+
     startGame() {
+        console.log("view.startGame running")
         this.refreshSidebar();
         this.setUpViewableGrid();
         this.bindEvents();

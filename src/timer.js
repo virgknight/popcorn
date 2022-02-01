@@ -15,6 +15,16 @@ class Timer {
         this.interval = setInterval(this.decrement.bind(this), 1000);
     }
 
+    pause () {
+        clearInterval(this.interval);
+    }
+
+    restart () {
+        console.log("restarting");
+        console.log(this.currentSeconds);
+        this.interval = setInterval(this.decrement.bind(this), 1000);
+    }
+
     stop () {
         if (this.renderedTimer.classList.contains("blinking")) {
             this.renderedTimer.classList.remove("blinking");

@@ -20,7 +20,7 @@
 
 <body>
     <!-- Introduction/instructions modal -->
-    <div class="modal">
+    <div id="instruction-modal" class="modal">
         <div id="instruction-content" class="modal-content">
             <p class="game-title">Popcorn Popper</p>
             <br>
@@ -53,6 +53,7 @@
                     for this popcorn-loving kitty before the movie starts or the show will not go on...</p>
             <br>
             <button id="start-game-button">Let's get popping!</button>
+            <button id="resume-game-button" class="hidden">Resume game</button>
             <img id="intro-kitty" src="images/kittens/intro.png">
         </div>
     </div>
@@ -121,6 +122,10 @@
                  alt="LinkedIn"></a>
             <a href="https://github.com/virgknight/popcorn" target="_blank"><img class="icon" id="github" src="images/github-icon.png"
                     alt="GitHub"></a>
+        </aside>
+
+        <aside class="reopen-instructions">
+            <button id="instructions-button">Instructions</button>
         </aside>
         </div>
 
