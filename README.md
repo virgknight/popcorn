@@ -7,6 +7,14 @@ The game plays out on a rectangular grid which is bordered by flames on the righ
 
 Check out the live demo [here](https://virgknight.github.io/popcorn/)!
 
+## Technologies
+This project was implemented with the following technologies:
+* JavaScript to handle game logic
+* HTML5/CSS3 to render the game grid, sidebar, and modals
+* Canvas to render a fun popcorn-popping graphic
+* Webpack to bundle and transpile the source JavaScript code
+* npm to handle project dependencies
+
 ## Functionality & MVPs
 In Popcorn Popper, a player can:
 * Start and stop a new game
@@ -69,14 +77,6 @@ Popcorn Popper uses a queue data structure to perform breadth-first node travers
             }
         }
 ```
-
-## Technologies
-This project was implemented with the following technologies:
-* JavaScript to handle game logic
-* HTML5/CSS3 to render the game grid, sidebar, and modals
-* Canvas to render a fun popcorn-popping graphic
-* Webpack to bundle and transpile the source JavaScript code
-* npm to handle project dependencies
 
 ## Future Considerations
 * Global leaderboard for high scores
