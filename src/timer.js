@@ -20,8 +20,6 @@ class Timer {
     }
 
     restart () {
-        console.log("restarting");
-        console.log(this.currentSeconds);
         this.interval = setInterval(this.decrement.bind(this), 1000);
     }
 

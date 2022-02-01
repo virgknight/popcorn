@@ -52,7 +52,6 @@ class View {
     }
 
     startGame() {
-        console.log("view.startGame running")
         this.refreshSidebar();
         this.setUpViewableGrid();
         this.bindEvents();

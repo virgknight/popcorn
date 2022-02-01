@@ -23,8 +23,6 @@ class Game {
     pause () { this.timer.pause(); }
     restart () { this.timer.restart(); }
 
-    fakeFunction () {console.log("test worked")}
-
     outOfTime () {
         document.getElementById("kitten").src = "./images/kittens/sad.png";
         document.getElementById("final-score").innerHTML = `Final score: ${this.score} points`;
